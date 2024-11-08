@@ -1,0 +1,91 @@
+$color-background: #121212;
+$color-text: #ffffff;
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+[data-scroll-container] {
+  background-color: $color-background;
+  color: $color-text;
+  overflow: hidden;
+
+  header {
+    position: relative;
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .scroll-animation {
+      cursor: pointer;
+      margin: 2rem 0;
+
+      svg {
+        fill: $color-text;
+        transition: transform 0.3s;
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+
+    .parallax {
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+
+    .text {
+      position: relative;
+      padding: 4rem 1rem;
+      z-index: 1;
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin: 0.5rem 0;
+
+          a {
+            color: $color-text;
+            text-decoration: none;
+
+            svg {
+              margin-right: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

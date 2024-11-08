@@ -1,0 +1,47 @@
+.nOne {
+  height: 99vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-image: url('https://nek.netlify.app/assets/images/night_rocks_ocean.jpg');
+  background-size: 170%;
+  background-position: 50% 100%;
+  border: white 20px solid;
+  margin: 0 auto;
+
+  img {
+    position: absolute;
+    border-radius: 1rem;
+  }
+
+  .ith,
+  .io,
+  .it {
+    will-change: transform, opacity;
+  }
+
+  .ith {
+    border-radius: 1rem;
+    bottom: 0vh;
+    right: 5rem;
+    width: 40vw;
+  }
+
+  .io {
+    left: 5vw;
+    width: 40vw;
+  }
+
+  .it {
+    right: 12vw;
+    width: 45vw;
+    top: 0rem;
+  }
+
+  .no {
+    color: white;
+    font-size: 20vw;
+    text-align: center;
+  }
+}

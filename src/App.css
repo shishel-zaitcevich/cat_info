@@ -1,0 +1,18 @@
+@import './assets/styles/ButtonSection.scss';
+@import './assets/styles/CatsSection.scss';
+@import './assets/styles/GallerySection.scss';
+
+body {
+  background: #000;
+  margin: 0;
+}
+
+.load_page {
+  z-index: 9000;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+

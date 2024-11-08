@@ -1,0 +1,36 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+
+// {
+ 
+//   "compilerOptions": {
+//     "target": "esnext",
+//     "module": "esnext",
+//     "jsx": "react",
+
+//     "moduleResolution": "node",
+//     "baseUrl": "./src",
+//     "paths": {
+//       "*": [
+//         "types/*"
+//       ]
+//     }
+//   },
+//   "esModuleInterop": true,
+//   "include": [
+//     "src/**/*.ts",
+//     "src/**/*.tsx",
+//     "src",
+//     "declarations.d.ts"
+//   ],
+//   "exclude": [
+    
+//     "node_modules"
+//   ]
+
+// }

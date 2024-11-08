@@ -1,0 +1,21 @@
+.hero {
+  max-height: 99vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  .hp {
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .ho {
+    color: white;
+    text-align: center;
+    font-size: 25vw;
+  }
+}
