@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
-import '../../assets/styles/CatGalleryPage.scss';
-import { CatImage } from '../../api/catApi';
+import '../../../assets/styles/CatGalleryPage.scss';
+import { CatImage } from '../../../api/catApi';
 
 const CatGalleryPage: React.FC = () => {
   const [catData, setCatData] = useState<CatImage[]>([]);

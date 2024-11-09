@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CatsSection } from './homePage/CatsSection';
-import { GallerySection } from './homePage/GallerySection';
-// import { ButtonSection } from './homePage/ButtonSection';
-import '../../assets/styles/HomePage.scss';
+import { CatsSection } from './CatsSection';
+import { GallerySection } from './GallerySection';
+import { ButtonSection } from './ButtonSection';
+import '../../../assets/styles/HomePage.scss';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
       <div data-scroll-container>
         <CatsSection />
         <GallerySection />
-        {/* <ButtonSection /> */}
+        <ButtonSection />
       </div>
     </>
   );
