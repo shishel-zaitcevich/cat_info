@@ -1,3 +1,4 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import axios from 'axios';
 
 const BASE_URL = 'https://api.thecatapi.com/v1';
@@ -24,6 +25,7 @@ export interface CatImage {
   height: number;
   url: string;
   breeds: {
+      description?: string;
       weight: {
           imperial: string;
           metric: string;
@@ -59,3 +61,27 @@ export const fetchCatImages = async (apiKey: string, limit = 10): Promise<CatIma
     throw new Error('Не удалось загрузить данные.');
   }
 };
+
+const apiKey = import.meta.env.VITE_CAT_API_KEY || '';
+
+export const catApi = createApi({
+  reducerPath: 'catApi',
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_URL,
+    prepareHeaders: (headers) => {
+      headers.set('x-api-key', apiKey);
+      return headers;
+    },
+  }),
+  tagTypes: ['Favorite'],
+  endpoints: (builder) => ({
+    fetchCatImages: builder.query<CatImage[], number>({
+      query: (limit = 10) => `images/search?limit=${limit}&has_breeds=1`,
+    }),
+    fetchCatByBreed: builder.query<CatImage[], string>({
+      query: (breedId) => `images/search?breed_ids=${breedId}`,
+    }),
+  }),
+});
+
+export const { useFetchCatImagesQuery, useFetchCatByBreedQuery } = catApi;
