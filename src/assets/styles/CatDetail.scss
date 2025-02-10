@@ -1,3 +1,9 @@
 .button-favourite {
   color: #fff;
+
+  .like:hover {
+    stroke: red !important; /* Цвет при наведении */
+    transform: scale(1.1);
+    transition: scale 0.3s ease-in-out;
+  }
 }

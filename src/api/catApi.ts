@@ -43,7 +43,7 @@ export interface CatImage {
 
 export const fetchCatImages = async (apiKey: string, limit = 10): Promise<CatImage[]> => {
   try {
-    const response = await axios.get<CatImage[]>(`${BASE_URL}/images/search?limit=${limit}&has_breeds=1`, {
+    const response = await axios.get<CatImage[]>(`${BASE_URL}/images/search?limit=${limit}&has_breeds=1&size=small`, {
       headers: {
         'x-api-key': apiKey,
       },

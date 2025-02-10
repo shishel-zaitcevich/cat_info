@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import '../../../assets/styles/CatsSection.scss';
+import '../../../assets/styles/homePage/CatsSection.scss';
 import gsap from 'gsap';
 
 export function CatsSection() {

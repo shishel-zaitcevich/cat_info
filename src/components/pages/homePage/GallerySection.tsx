@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import '../../../assets/styles/GallerySection.scss';
+import '../../../assets/styles/homePage/GallerySection.scss';
 import gsap from 'gsap';
 // import 'locomotive-scroll/dist/locomotive-scroll.css';
 

@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CatsSection } from './CatsSection';
 import { GallerySection } from './GallerySection';
 import { ButtonSection } from './ButtonSection';
-import '../../../assets/styles/HomePage.scss';
+import '../../../assets/styles/homePage/HomePage.scss';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 
 gsap.registerPlugin(ScrollTrigger);

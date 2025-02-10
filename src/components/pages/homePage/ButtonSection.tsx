@@ -1,4 +1,4 @@
-import '../../../assets/styles/ButtonSection.scss';
+import '../../../assets/styles/homePage/ButtonSection.scss';
 
 import { useRef } from 'react';
 import { Button } from '@mui/material';
