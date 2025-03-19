@@ -5,6 +5,7 @@ import '../../../assets/styles/CatList.scss';
 // import gsap from 'gsap';
 // import { useGSAP } from '@gsap/react';
 import useCatListAnimation from '../../../hooks/useCatListAnimation';
+import Cat from '../../shared/preloader/Cat';
 
 export interface Cat {
   id: string;
@@ -112,7 +113,8 @@ const CatList: React.FC = () => {
 
   useCatListAnimation(isRendered);
 
-  if (isLoading) return <p>Загрузка...</p>;
+  // if (isLoading) return <p>Загрузка...</p>;
+  if (isLoading) return <Cat />;
 
   return (
     <>

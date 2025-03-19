@@ -1,37 +1,55 @@
-import { useEffect } from 'react';
+import { useGSAP } from '@gsap/react';
+
 import '../../../assets/styles/homePage/CatsSection.scss';
 import gsap from 'gsap';
+import { useEffect, useRef, useState } from 'react';
 
 export function CatsSection() {
+  const [isBgLoaded, setIsBgLoaded] = useState(false);
+  const bgImageRef = useRef(null);
+
+  // Предзагрузка изображения
   useEffect(() => {
-    gsap.fromTo(
-      //анимация для cats
-      '.ho',
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, ease: 'expo.out', duration: 2, delay: 0.8 }
-    );
-    gsap.to('.hp', {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: '.hp',
-        markers: false,
-        scrub: 1,
-        end: 'bottom top',
-        start: 'top top',
-      },
-    });
+    const img = new Image();
+    img.src = '/michiel-six-QFmOSzFprXk-unsplash.jpg';
+    img.onload = () => {
+      setIsBgLoaded(true);
+    };
   }, []);
 
+  useGSAP(() => {
+    if (isBgLoaded) {
+      // Сначала делаем фон видимым
+      gsap.to('.bgImage', {
+        opacity: 1,
+        duration: 0.5,
+        onComplete: () => {
+          // После этого анимируем заголовок
+          gsap.set('.header', { visibility: 'hide', opacity: 0, y: 100 });
+          gsap.to('.header', {
+            opacity: 1,
+            visibility: 'visible',
+            y: 0,
+            ease: 'expo.out',
+            duration: 2,
+            delay: 0.7,
+          });
+        },
+      });
+    }
+  }, [isBgLoaded]);
+
   return (
-    <div className="hero" data-scroll data-scroll-section>
+    <div className="cats" data-scroll data-scroll-section>
       <img
-        className="hp"
+        ref={bgImageRef}
+        className="bgImage"
         src="/michiel-six-QFmOSzFprXk-unsplash.jpg"
         alt=""
         data-scroll
         data-scroll-speed="-3"
       />
-      <h1 className="ho" data-scroll data-scroll-speed="-4">
+      <h1 className="header" data-scroll data-scroll-speed="-4">
         CAT'S
       </h1>
     </div>

@@ -1,21 +1,51 @@
-.hero {
+.cats {
   max-height: 99vh;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  overflow: hidden;
+  position: relative;
 
-  .hp {
+  @media screen and (max-width: 768px) {
+    height: 99vh;
+    align-items: flex-start;
+  }
+
+  .bgImage {
     position: absolute;
     z-index: -1;
     object-fit: cover;
     width: 90vw;
+    max-width: 100%;
     height: 70vh;
+    opacity: 0; /* Начинаем с прозрачного фона */
+
+    @media screen and (max-width: 768px) {
+      width: 100vw;
+      height: 100vh;
+    }
+    @media screen and (max-width: 480px) {
+      width: 150%;
+      max-width: none;
+      transform: translateX(-33.33%);
+      left: 0;
+    }
   }
 
-  .ho {
+  .header {
     color: white;
     text-align: center;
     font-size: 25vw;
+    visibility: hidden; /* Заголовок скрыт до начала анимации */
+    will-change: opacity, transform;
+
+    @media screen and (max-width: 768px) {
+      font-size: 30vw;
+    }
+    @media screen and (max-width: 480px) {
+      font-size: 30vw;
+      margin-top: 200px;
+    }
   }
 }

@@ -2,6 +2,10 @@
 @import './assets/styles/CatsSection.scss';
 @import './assets/styles/GallerySection.scss';
 
+html, body {
+  overflow: visible !important;
+  height: auto !important;
+}
 body {
   background: #000;
   margin: 0;

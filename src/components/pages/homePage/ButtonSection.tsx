@@ -26,7 +26,7 @@ export function ButtonSection() {
 
   return (
     <div className="gallery-button-container " data-scroll data-scroll-section>
-      <Link to={'/gallery'}>
+      <Link to={'/gallery'} data-scroll>
         <Button
           ref={buttonRef}
           variant="contained"
@@ -54,7 +54,7 @@ export function ButtonSection() {
           ref={(el) => (imagesRef.current[index] = el!)}
           className="gallery-image"
         >
-          <img src="/paw.png" alt="Gallery" />
+          <img src="/paw.png" alt="Gallery" data-scroll />
         </div>
       ))}
     </div>

@@ -1,47 +1,78 @@
-.nOne {
+.gallery__section {
   height: 99vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background-image: url('https://nek.netlify.app/assets/images/night_rocks_ocean.jpg');
-  background-size: 170%;
+  background-repeat: no-repeat;
+  background-size: 270%;
   background-position: 50% 100%;
   border: white 20px solid;
   margin: 0 auto;
+  // position: relative;
 
   img {
     position: absolute;
     border-radius: 1rem;
   }
 
-  .ith,
-  .io,
-  .it {
+  .one,
+  .two,
+  .three {
     will-change: transform, opacity;
+    // position: relative;
   }
 
-  .ith {
+  .one {
     border-radius: 1rem;
     bottom: 0vh;
     right: 5rem;
     width: 40vw;
   }
 
-  .io {
+  .two {
     left: 5vw;
     width: 40vw;
   }
 
-  .it {
+  .three {
     right: 12vw;
     width: 45vw;
     top: 0rem;
   }
 
-  .no {
+  .header {
     color: white;
     font-size: 20vw;
     text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    img {
+      position: relative;
+    }
+
+    .one,
+    .two,
+    .three {
+      width: 50vw;
+    }
+
+    .header {
+      font-size: 25vw;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .one,
+    .two,
+    .three {
+      width: 70vw;
+    }
+
+    .header {
+      font-size: 30vw;
+    }
   }
 }
