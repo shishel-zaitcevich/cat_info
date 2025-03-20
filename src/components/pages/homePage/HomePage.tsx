@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
     };
   }, []);
 
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   useEffect(() => {
     if (isMobile) {
@@ -78,20 +78,35 @@ const HomePage: React.FC = () => {
     };
   }, [isMobile]);
 
-  return (
-    <ReactLenis
-      ref={lenisRef}
-      root
-      options={{
-        lerp: isMobile ? 0.03 : 0.05,
-        syncTouch: true,
-        gestureOrientation: 'vertical',
-        touchMultiplier: isMobile ? 0.5 : 0.7,
-        smoothWheel: true,
-        wheelMultiplier: isMobile ? 0.5 : 1,
-        infinite: false,
-      }}
-    >
+  useEffect(() => {
+    if (isMobile) {
+      document.documentElement.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';
+    }
+  }, []);
+
+  return isMobile ? (
+    <div>
+      {isLoading ? (
+        <Cat />
+      ) : (
+        <div style={{ visibility: isLoaded ? 'visible' : 'hidden' }}>
+          <CatsSection />
+          <div
+            style={{
+              visibility: sectionsVisible ? 'visible' : 'hidden',
+              opacity: sectionsVisible ? 1 : 0,
+              transition: 'opacity 0.5s ease',
+            }}
+          >
+            <GallerySection />
+            <ButtonSection />
+          </div>
+        </div>
+      )}
+    </div>
+  ) : (
+    <ReactLenis ref={lenisRef} root options={{ lerp: 0.05, infinite: false }}>
       {isLoading ? (
         <Cat />
       ) : (
