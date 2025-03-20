@@ -2,6 +2,8 @@
   position: relative;
   height: 100vh;
   width: 100vw;
+  position: relative;
+  visibility: hidden; /* Изначально скрыты */
 
   .cat-item {
     position: absolute;
@@ -71,3 +73,21 @@
     }
   }
 }
+
+.cat-list.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.cat-list.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Убедитесь, что у вас есть базовые стили для .section */
+
+/* Убедитесь, что у вас есть базовые стили для .details */
+// .details {
+//   visibility: hidden; /* Изначально скрыты */
+// }

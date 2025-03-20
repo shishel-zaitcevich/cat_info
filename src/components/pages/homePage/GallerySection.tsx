@@ -36,21 +36,19 @@ export function GallerySection() {
 
     const images = ['.one', '.two', '.three'];
 
-    if (!isMobile) {
-      // // Для мобильных - более простая анимация
-      // gsap.set(images, { opacity: 0.8, scale: 0.9 });
-      // gsap.to(images, {
-      //   opacity: 1,
-      //   scale: 1,
-      //   scrollTrigger: {
-      //     trigger: '.gallery__section',
-      //     start: 'top 80%',
-      //     end: 'bottom 20%',
-      //     scrub: 0.5,
-      //   },
-      // });
-
-      // Полноценная анимация для десктопа
+    if (isMobile) {
+      gsap.set(images, { opacity: 0.5, scale: 0.3 });
+      gsap.to(images, {
+        opacity: 1,
+        scale: 1,
+        scrollTrigger: {
+          trigger: '.gallery__section',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 0.5,
+        },
+      });
+    } else {
       gsap.set(images, { opacity: 0.65, scale: 1 });
       images.forEach((selector) => {
         gsap.to(selector, {

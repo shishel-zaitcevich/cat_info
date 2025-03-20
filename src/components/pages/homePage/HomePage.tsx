@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
       document.documentElement.style.overflow = 'auto';
       document.body.style.overflow = 'auto';
     }
-  }, []);
+  }, [isMobile]);
 
   return isMobile ? (
     <div>
