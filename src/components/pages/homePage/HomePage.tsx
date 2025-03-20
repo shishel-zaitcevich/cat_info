@@ -70,10 +70,10 @@ const HomePage: React.FC = () => {
       root
       options={{
         lerp: 0.05,
-        syncTouch: true, // ✅ Включает поддержку тач-скролла в актуальной версии Lenis
-        gestureOrientation: 'vertical', // Вертикальный скролл
-        touchMultiplier: 2, // Чувствительность тача
-        infinite: false, // Отключаем бесконечный скролл
+        syncTouch: true, //  Включает поддержку тач-скролла
+        gestureOrientation: 'vertical',
+        touchMultiplier: 0.7,
+        infinite: false,
       }}
     >
       {isLoading ? (

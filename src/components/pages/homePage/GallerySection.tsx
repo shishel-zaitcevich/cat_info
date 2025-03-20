@@ -31,7 +31,6 @@ export function GallerySection() {
         start: 'top 90%',
         end: 'bottom top',
         scrub: 1,
-        markers: true,
       },
     });
 
