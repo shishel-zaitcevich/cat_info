@@ -19,9 +19,6 @@ const HomePage: React.FC = () => {
   const [sectionsVisible, setSectionsVisible] = useState<boolean>(false);
   const lenisRef: RefObject<LenisRef> = React.useRef<LenisRef>(null);
 
-  const isTouchDevice =
-    'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
@@ -43,8 +40,6 @@ const HomePage: React.FC = () => {
   }, [isLoading]);
 
   useEffect(() => {
-    if (isTouchDevice) return;
-
     const lenis = lenisRef.current?.lenis;
     if (!lenis) return;
 
@@ -54,7 +49,6 @@ const HomePage: React.FC = () => {
 
     lenis.on('scroll', updateScroll);
 
-    // Обновление Lenis через requestAnimationFrame
     let rafId: number;
     const update = (time: number) => {
       lenis.raf(time);
@@ -68,7 +62,7 @@ const HomePage: React.FC = () => {
       cancelAnimationFrame(rafId);
       lenis.off('scroll', updateScroll);
     };
-  }, [isTouchDevice]);
+  }, []);
 
   return (
     <ReactLenis
@@ -76,6 +70,10 @@ const HomePage: React.FC = () => {
       root
       options={{
         lerp: 0.05,
+        syncTouch: true, // ✅ Включает поддержку тач-скролла в актуальной версии Lenis
+        gestureOrientation: 'vertical', // Вертикальный скролл
+        touchMultiplier: 2, // Чувствительность тача
+        infinite: false, // Отключаем бесконечный скролл
       }}
     >
       {isLoading ? (
