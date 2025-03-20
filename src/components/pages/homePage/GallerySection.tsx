@@ -1,75 +1,84 @@
 import '../../../assets/styles/homePage/GallerySection.scss';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useCallback, useState } from 'react';
 
 export function GallerySection() {
-  // Добавим состояние для контроля загрузки всех изображений
   const [imagesLoaded, setImagesLoaded] = useState(0);
+
   const totalImages = 3;
   const allImagesLoaded = imagesLoaded === totalImages;
 
-  // Функция для отслеживания загрузки каждого изображения
+  const isTablet = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 520;
+
+  console.log(isMobile);
+
   const handleImageLoad = useCallback(() => {
     setImagesLoaded((prev) => prev + 1);
   }, []);
 
   useGSAP(() => {
-    // Запускаем анимации только когда все изображения загружены
     if (!allImagesLoaded) return;
 
-    gsap.defaults({ ease: 'power1.out', duration: 1 });
+    gsap.defaults({ ease: 'power2.out' });
 
+    // Анимация фона
     gsap.to('.gallery__section', {
-      backgroundSize: '100%',
-      backgroundPosition: '50% 100%',
-
+      backgroundSize: isTablet ? '170%' : '100%',
+      backgroundPosition: isTablet ? 'center center' : '50% 100%',
       scrollTrigger: {
         trigger: '.gallery__section',
-        scrub: 1,
-        start: 'top 95%',
+        start: 'top 90%',
         end: 'bottom top',
+        scrub: 1,
         markers: true,
       },
     });
 
     const images = ['.one', '.two', '.three'];
+
+    gsap.set(images, { opacity: 0.65, scale: 1 });
+
+    // Анимация изображений
     images.forEach((selector) => {
       gsap.to(selector, {
-        transform: 'scale(.7)',
-        opacity: 0.65,
-        stagger: 0.2,
+        scale: 0.7,
+        opacity: 1,
+        duration: 1.5, // Увеличиваем длительность
         scrollTrigger: {
           trigger: '.gallery__section',
-          markers: true,
-          scrub: 0.5,
-          start: 'top 99%',
-          end: 'bottom bottom',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 1, // Делаем анимацию двусторонней и плавной
+          toggleActions: 'play reverse play reverse', // Реакция на скролл вверх/вниз
         },
-        delay: 0.05,
       });
     });
 
-    gsap.timeline({
+    // gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: '.galleryHeader',
+    //     start: 'top 95%',
+    //     end: 'bottom 100%',
+    //     scrub: 0.5,
+    //   },
+    // });
+    // Анимация заголовка
+    gsap.set('.galleryHeader', { opacity: 0.1 });
+    gsap.to('.galleryHeader', {
+      opacity: 1,
+      // y: '80%',
+      duration: 8.5,
       scrollTrigger: {
-        trigger: '.header',
-        start: 'top 95%',
-        end: 'bottom 100%',
-        scrub: 0.5,
+        trigger: '.gallery__section',
+        start: 'top 50%',
+        end: 'bottom 70%',
+        scrub: 1,
+        toggleActions: 'play reverse play reverse',
       },
     });
-    // .fromTo('.header', { opacity: 0.1 }, { opacity: 1 });
-    gsap.set('.gallery__section', { opacity: 0.1 });
-    gsap.to('.gallery__section', {
-      opacity: 1,
-      duration: 2.5,
-    });
-
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 500);
-  }, [allImagesLoaded]); // Зависимость от загрузки всех изображений
+  }, [allImagesLoaded]);
 
   return (
     <div
@@ -108,7 +117,7 @@ export function GallerySection() {
         loading="lazy"
         onLoad={handleImageLoad}
       />
-      <h1 className="header" id="on" data-scroll data-scroll-speed="-4">
+      <h1 className="galleryHeader" id="on" data-scroll data-scroll-speed="-4">
         GALLERY
       </h1>
     </div>

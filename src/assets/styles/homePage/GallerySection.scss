@@ -10,19 +10,20 @@
   background-position: 50% 100%;
   border: white 20px solid;
   margin: 0 auto;
-  // position: relative;
+  position: relative;
 
   img {
     position: absolute;
     border-radius: 1rem;
+    will-change: transform, opacity;
   }
 
-  .one,
-  .two,
-  .three {
-    will-change: transform, opacity;
-    // position: relative;
-  }
+  // .one,
+  // .two,
+  // .three {
+  //   will-change: transform, opacity;
+  //   // position: relative;
+  // }
 
   .one {
     border-radius: 1rem;
@@ -42,37 +43,52 @@
     top: 0rem;
   }
 
-  .header {
+  .galleryHeader {
     color: white;
     font-size: 20vw;
     text-align: center;
+    opacity: 0.1;
+    position: relative;
+    z-index: 5;
   }
 
   @media screen and (max-width: 768px) {
-    img {
-      position: relative;
-    }
+    border: white 10px solid;
 
-    .one,
-    .two,
     .three {
-      width: 50vw;
+      top: 2rem;
+      right: -6vw;
+      width: 70vw;
     }
 
-    .header {
-      font-size: 25vw;
+    .two {
+      left: -6vw;
+      width: 60vw;
+    }
+
+    .one {
+      width: 70vw;
+      right: -1rem;
+      z-index: 3;
+    }
+
+    .galleryHeader {
+      font-size: 19vw;
     }
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 520px) {
+    background-size: 436% !important;
+    background-position: 40% !important;
+
     .one,
     .two,
     .three {
       width: 70vw;
     }
 
-    .header {
-      font-size: 30vw;
+    .galleryHeader {
+      font-size: 18vw;
     }
   }
 }

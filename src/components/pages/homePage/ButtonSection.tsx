@@ -24,6 +24,9 @@ export function ButtonSection() {
     animateImagesLeave(imagesRef);
   };
 
+  const isTablet = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 520;
+
   return (
     <div className="gallery-button-container " data-scroll data-scroll-section>
       <Link to={'/gallery'} data-scroll>
@@ -39,7 +42,8 @@ export function ButtonSection() {
             height: '100%',
             fontSize: '1.5rem',
             backgroundColor: '#aab1b7',
-            marginLeft: '90%',
+            marginLeft: isMobile ? '50%' : isTablet ? '150%' : '90%',
+            marginTop: isMobile ? '560px' : '0',
             borderRadius: '10px',
             fontWeight: '600',
           }}
