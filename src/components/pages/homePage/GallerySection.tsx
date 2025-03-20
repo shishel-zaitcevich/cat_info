@@ -23,7 +23,6 @@ export function GallerySection() {
 
     gsap.defaults({ ease: 'power2.out' });
 
-    // Анимация фона
     gsap.to('.gallery__section', {
       backgroundSize: isTablet ? '170%' : '100%',
       backgroundPosition: isTablet ? 'center center' : '50% 100%',
@@ -40,35 +39,24 @@ export function GallerySection() {
 
     gsap.set(images, { opacity: 0.65, scale: 1 });
 
-    // Анимация изображений
     images.forEach((selector) => {
       gsap.to(selector, {
         scale: 0.7,
         opacity: 1,
-        duration: 1.5, // Увеличиваем длительность
+        duration: 1.5,
         scrollTrigger: {
           trigger: '.gallery__section',
           start: 'top 80%',
           end: 'bottom 20%',
-          scrub: 1, // Делаем анимацию двусторонней и плавной
-          toggleActions: 'play reverse play reverse', // Реакция на скролл вверх/вниз
+          scrub: 1,
+          toggleActions: 'play reverse play reverse',
         },
       });
     });
 
-    // gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: '.galleryHeader',
-    //     start: 'top 95%',
-    //     end: 'bottom 100%',
-    //     scrub: 0.5,
-    //   },
-    // });
-    // Анимация заголовка
     gsap.set('.galleryHeader', { opacity: 0.1 });
     gsap.to('.galleryHeader', {
       opacity: 1,
-      // y: '80%',
       duration: 8.5,
       scrollTrigger: {
         trigger: '.gallery__section',

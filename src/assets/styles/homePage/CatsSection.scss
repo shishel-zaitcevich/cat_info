@@ -1,5 +1,4 @@
 .cats {
-  // max-height: 99vh;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -20,7 +19,7 @@
     width: 90vw;
     max-width: 100%;
     height: 70vh;
-    opacity: 0; /* Начинаем с прозрачного фона */
+    opacity: 0;
 
     @media screen and (max-width: 768px) {
       width: 100vw;
@@ -38,7 +37,7 @@
     color: white;
     text-align: center;
     font-size: 25vw;
-    visibility: hidden; /* Заголовок скрыт до начала анимации */
+    visibility: hidden;
     will-change: opacity, transform;
 
     @media screen and (max-width: 768px) {

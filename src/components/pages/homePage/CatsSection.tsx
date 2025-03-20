@@ -8,7 +8,6 @@ export function CatsSection() {
   const [isBgLoaded, setIsBgLoaded] = useState(false);
   const bgImageRef = useRef(null);
 
-  // Предзагрузка изображения
   useEffect(() => {
     const img = new Image();
     img.src = '/michiel-six-QFmOSzFprXk-unsplash.jpg';
@@ -19,12 +18,10 @@ export function CatsSection() {
 
   useGSAP(() => {
     if (isBgLoaded) {
-      // Сначала делаем фон видимым
       gsap.to('.bgImage', {
         opacity: 1,
         duration: 0.5,
         onComplete: () => {
-          // После этого анимируем заголовок
           gsap.set('.header', { visibility: 'hide', opacity: 0, y: 100 });
           gsap.to('.header', {
             opacity: 1,
