@@ -37,13 +37,13 @@ export function ButtonSection() {
           onMouseLeave={handleMouseLeave}
           sx={{
             maxWidth: '300px',
-            width: '100%',
+            width: isMobile ? '220px' : '100%',
             maxHeight: '70px',
-            height: '100%',
-            fontSize: '1.5rem',
+            height: isMobile ? '50px' : '100%',
+            fontSize: isMobile ? '2rem' : '1.5rem',
             backgroundColor: '#aab1b7',
-            marginLeft: isMobile ? '50%' : isTablet ? '150%' : '90%',
-            marginTop: isMobile ? '560px' : '0',
+            marginLeft: isMobile ? '0' : isTablet ? '150%' : '90%',
+            marginTop: isMobile ? '520px' : '0',
             borderRadius: '10px',
             fontWeight: '600',
           }}

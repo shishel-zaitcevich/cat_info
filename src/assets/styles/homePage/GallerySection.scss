@@ -75,13 +75,25 @@
     background-position: 40% !important;
 
     .one,
-    .two,
     .three {
       width: 100vw;
+      opacity: 0.7;
+    }
+
+    .two {
+      left: -1vw;
+      width: 96vw !important;
+      top: 7rem;
+      opacity: 0.7;
+    }
+
+    .three {
+      opacity: 0.9;
     }
 
     .galleryHeader {
       font-size: 18vw;
+      opacity: 0.9;
     }
   }
 }

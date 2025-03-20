@@ -37,9 +37,8 @@ export function GallerySection() {
     const images = ['.one', '.two', '.three'];
 
     if (isMobile) {
-      gsap.set(images, { opacity: 0.5, scale: 0.6 });
+      gsap.set(images, { scale: 0.6 });
       gsap.to(images, {
-        opacity: 1,
         scale: 1,
         scrollTrigger: {
           trigger: '.gallery__section',
@@ -66,18 +65,20 @@ export function GallerySection() {
       });
     }
 
-    gsap.set('.galleryHeader', { opacity: isMobile ? 0.3 : 0.1 });
-    gsap.to('.galleryHeader', {
-      opacity: 1,
-      duration: isMobile ? 4 : 8.5,
-      scrollTrigger: {
-        trigger: '.gallery__section',
-        start: 'top 50%',
-        end: 'bottom 70%',
-        scrub: 1,
-        toggleActions: 'play reverse play reverse',
-      },
-    });
+    if (!isMobile) {
+      gsap.set('.galleryHeader', { opacity: isMobile ? 0.3 : 0.1 });
+      gsap.to('.galleryHeader', {
+        opacity: 1,
+        duration: isMobile ? 4 : 8.5,
+        scrollTrigger: {
+          trigger: '.gallery__section',
+          start: 'top 50%',
+          end: 'bottom 70%',
+          scrub: 1,
+          toggleActions: 'play reverse play reverse',
+        },
+      });
+    }
   }, [allImagesLoaded]);
 
   return (
