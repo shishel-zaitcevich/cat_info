@@ -19,6 +19,9 @@ const HomePage: React.FC = () => {
   const [sectionsVisible, setSectionsVisible] = useState<boolean>(false);
   const lenisRef: RefObject<LenisRef> = React.useRef<LenisRef>(null);
 
+  const isTouchDevice =
+    'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
@@ -40,6 +43,8 @@ const HomePage: React.FC = () => {
   }, [isLoading]);
 
   useEffect(() => {
+    if (isTouchDevice) return;
+
     const lenis = lenisRef.current?.lenis;
     if (!lenis) return;
 
@@ -63,10 +68,16 @@ const HomePage: React.FC = () => {
       cancelAnimationFrame(rafId);
       lenis.off('scroll', updateScroll);
     };
-  }, []);
+  }, [isTouchDevice]);
 
   return (
-    <ReactLenis ref={lenisRef} root options={{ lerp: 0.05 }}>
+    <ReactLenis
+      ref={lenisRef}
+      root
+      options={{
+        lerp: 0.05,
+      }}
+    >
       {isLoading ? (
         <Cat />
       ) : (
