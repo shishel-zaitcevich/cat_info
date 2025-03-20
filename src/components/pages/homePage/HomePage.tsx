@@ -52,7 +52,6 @@ const HomePage: React.FC = () => {
     let rafId: number;
     const update = (time: number) => {
       lenis.raf(time);
-      ScrollTrigger.update();
       rafId = requestAnimationFrame(update);
     };
 
@@ -64,15 +63,32 @@ const HomePage: React.FC = () => {
     };
   }, []);
 
+  const isMobile = window.innerWidth <= 768;
+
+  useEffect(() => {
+    if (isMobile) {
+      ScrollTrigger.config({
+        limitCallbacks: true,
+        ignoreMobileResize: true,
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [isMobile]);
+
   return (
     <ReactLenis
       ref={lenisRef}
       root
       options={{
-        lerp: 0.05,
-        syncTouch: true, //  Включает поддержку тач-скролла
+        lerp: isMobile ? 0.03 : 0.05,
+        syncTouch: true,
         gestureOrientation: 'vertical',
-        touchMultiplier: 0.7,
+        touchMultiplier: isMobile ? 0.5 : 0.7,
+        smoothWheel: true,
+        wheelMultiplier: isMobile ? 0.5 : 1,
         infinite: false,
       }}
     >

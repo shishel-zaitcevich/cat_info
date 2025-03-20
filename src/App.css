@@ -5,6 +5,8 @@
 html, body {
   overflow: visible !important;
   height: auto !important;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
 }
 body {
   background: #000;

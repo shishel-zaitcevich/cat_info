@@ -30,33 +30,48 @@ export function GallerySection() {
         trigger: '.gallery__section',
         start: 'top 90%',
         end: 'bottom top',
-        scrub: 1,
+        scrub: isTablet || isMobile ? 0.5 : 1,
       },
     });
 
     const images = ['.one', '.two', '.three'];
 
-    gsap.set(images, { opacity: 0.65, scale: 1 });
-
-    images.forEach((selector) => {
-      gsap.to(selector, {
-        scale: 0.7,
+    if (isMobile) {
+      // Для мобильных - более простая анимация
+      gsap.set(images, { opacity: 0.8, scale: 0.9 });
+      gsap.to(images, {
         opacity: 1,
-        duration: 1.5,
+        scale: 1,
         scrollTrigger: {
           trigger: '.gallery__section',
           start: 'top 80%',
           end: 'bottom 20%',
-          scrub: 1,
-          toggleActions: 'play reverse play reverse',
+          scrub: 0.5,
         },
       });
-    });
+    } else {
+      // Полноценная анимация для десктопа
+      gsap.set(images, { opacity: 0.65, scale: 1 });
+      images.forEach((selector) => {
+        gsap.to(selector, {
+          scale: 0.7,
+          opacity: 1,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: '.gallery__section',
+            start: 'top 80%',
+            end: 'bottom 20%',
+            scrub: 1,
+            toggleActions: 'play reverse play reverse',
+          },
+        });
+      });
+    }
 
-    gsap.set('.galleryHeader', { opacity: 0.1 });
+    gsap.set('.galleryHeader', { opacity: isMobile ? 0.3 : 0.1 });
     gsap.to('.galleryHeader', {
       opacity: 1,
-      duration: 8.5,
+      duration: isMobile ? 4 : 8.5,
       scrollTrigger: {
         trigger: '.gallery__section',
         start: 'top 50%',
@@ -81,8 +96,6 @@ export function GallerySection() {
         className="one"
         src="/deniz-uzuner-0ZffcNJ7jP0-unsplash.jpg"
         alt=""
-        data-scroll
-        data-scroll-speed="-2"
         loading="lazy"
         onLoad={handleImageLoad}
       />
@@ -90,8 +103,6 @@ export function GallerySection() {
         className="two"
         src="/sara-groblechner-m5u3tXsY76w-unsplash.jpg"
         alt=""
-        data-scroll
-        data-scroll-speed="-5"
         loading="lazy"
         onLoad={handleImageLoad}
       />
@@ -99,12 +110,10 @@ export function GallerySection() {
         className="three"
         src="/oguzhan-tasimaz-r2Uk2g31JiE-unsplash.jpg"
         alt=""
-        data-scroll
-        data-scroll-speed="-1"
         loading="lazy"
         onLoad={handleImageLoad}
       />
-      <h1 className="galleryHeader" id="on" data-scroll data-scroll-speed="-4">
+      <h1 className="galleryHeader" id="on">
         GALLERY
       </h1>
     </div>
