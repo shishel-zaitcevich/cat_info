@@ -37,7 +37,7 @@ export function GallerySection() {
     const images = ['.one', '.two', '.three'];
 
     if (isMobile) {
-      gsap.set(images, { opacity: 0.5, scale: 0.3 });
+      gsap.set(images, { opacity: 0.5, scale: 0.6 });
       gsap.to(images, {
         opacity: 1,
         scale: 1,
