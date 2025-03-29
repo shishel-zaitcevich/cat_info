@@ -22,7 +22,7 @@ const catSlice = createSlice({
     toggleFavorite: (state, action: PayloadAction<string>) => {
       const breedId = action.payload;
       state.favorites[breedId] = !state.favorites[breedId];
-      console.log('Updated favorites:', state.favorites); // Проверка
+      console.log('Updated favorites:', state.favorites); 
     }
   },
 });

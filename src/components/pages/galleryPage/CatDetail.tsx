@@ -1,65 +1,126 @@
-// import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useFetchCatByBreedQuery } from '../../../api/catApi';
-import { toggleFavorite } from '../../../store/catSlice';
-import { useAppDispatch, useAppSelector } from '../../../hooks/useAppSelector';
+import {
+  useAddToFavoritesMutation,
+  useFetchCatByBreedQuery,
+  useFetchFavoritesQuery,
+  useRemoveFromFavoritesMutation,
+} from '../../../api/catApi';
+
 import '../../../assets/styles/CatDetail.scss';
-// import IconLike from '../../IconLike';
-// import MustacheAnimation from '../../IconLike';
-// import { useRef } from 'react';
+import { useMustachesShakeAnimation } from '../../../hooks/useMustachesShake';
 
 interface CatDetailProps {
-  className?: string; // Необязательный пропс
+  className?: string;
 }
 
-export const CatDetail: React.FC<CatDetailProps> = ({ className }) => {
-  const { breedId } = useParams<{ breedId: string }>();
-  const dispatch = useAppDispatch();
+export const CatDetail = React.forwardRef<HTMLDivElement, CatDetailProps>(
+  ({ className }, ref) => {
+    const { buttonRef, leftMustacheRef, rightMustacheRef } =
+      useMustachesShakeAnimation();
 
-  // const mustacheRef = useRef(null);
-  // const favorites = useAppSelector((state) => state.cats.favorites);
+    const { breedId } = useParams<{ breedId: string }>();
+    const [isFavourite, setIsFavourite] = useState(false);
 
-  const isFavorite = useAppSelector((state) =>
-    breedId ? state.cats.favorites[breedId] : false
-  );
+    const { data: catImages = [], isLoading } = useFetchCatByBreedQuery(
+      breedId || ''
+    );
+    const subId = 'user-99568';
+    const { data: favorites = [], refetch } = useFetchFavoritesQuery({ subId });
+    const [addToFavorites] = useAddToFavoritesMutation();
+    const [removeFromFavorites] = useRemoveFromFavoritesMutation();
 
-  const { data: catImages = [], isLoading } = useFetchCatByBreedQuery(
-    breedId || ''
-  );
+    const catImage = catImages[0];
 
-  if (isLoading) return <p>Загрузка...</p>;
+    useEffect(() => {
+      if (!catImage || isLoading) return;
+      const isInFavoriteList = favorites.some(
+        (fav) => fav.image_id === catImage.id
+      );
+      setIsFavourite(isInFavoriteList);
+    }, [favorites, catImage, isLoading]);
 
-  // const isFavorite = breedId ? favorites[breedId] : false;
+    const handleFavoriteClick = async () => {
+      if (!catImage) return;
 
-  return (
-    <div className={`cat-detail ${className}`}>
-      {catImages.length > 0 ? (
-        <>
-          {/* <img src={catImages[0].url} alt={catImages[0].breeds[0]?.name} />
-          <h2>{catImages[0].breeds[0]?.name}</h2> */}
-          <p className="cat-details"></p>
+      try {
+        // Проверяем текущее состояние избранного
+        const favoriteEntry = favorites.find(
+          (fav) => fav.image_id === catImage.id
+        );
+        const isInFavoriteList = favorites.some(
+          (fav) => fav.image_id === catImage.id
+        );
+
+        console.log('favorites:', favorites);
+        console.log('catImage.id:', catImage.id);
+        console.log('isInFavoriteList:', isInFavoriteList);
+        console.log('favoriteEntry:', favoriteEntry);
+
+        if (isInFavoriteList && favoriteEntry) {
+          await removeFromFavorites({
+            favouriteId: favoriteEntry.id.toString(),
+          }).unwrap();
+          setIsFavourite(false);
+          console.log('Успешно удалено!');
+        } else {
+          const response = await addToFavorites({
+            imageId: catImage.id,
+            subId,
+          }).unwrap();
+
+          console.log('Успешно добавлено!', response);
+          setIsFavourite(true);
+          // Ждем обновления данных
+          await refetch();
+
+          // После refetch проверяем заново
+          const updatedFavorites = (await refetch()).data || favorites;
+          const isNowInFavoriteList = updatedFavorites.some(
+            (fav) => fav.image_id === catImage.id
+          );
+          setIsFavourite(isNowInFavoriteList);
+        }
+      } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+      }
+    };
+
+    if (isLoading) return <p>Загрузка...</p>;
+    if (!catImage) return <p>Информация о породе недоступна.</p>;
+    return (
+      <div className={`cat-detail ${className || ''}`} ref={ref}>
+        {catImages.length > 0 && (
           <button
-            onClick={() => {
-              dispatch(toggleFavorite(breedId || ''));
-              console.log(isFavorite);
-              // if (mustacheRef.current) {
-              //   mustacheRef.current.triggerAnimation();
-              // }
-            }}
+            onClick={handleFavoriteClick}
             className="button-favourite"
+            ref={buttonRef}
           >
-            {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
-            <img
-              src={isFavorite ? '/mustaches_pink.png' : '/mustaches1.svg'}
-              alt="mustaches"
-              className="like"
-            />
-            {/* <IconLike /> */}
+            <p className="like-button__text">
+              {isFavourite ? 'Remove from favorites' : 'Add to favorites'}
+            </p>
+            <div className="like-button">
+              <img
+                src="/mustacheLeft.png"
+                alt="Left mustache"
+                className="mustache"
+                ref={leftMustacheRef}
+              />
+              <img
+                src={isFavourite ? '/inFavourite.png' : '/addToFavourite.png'}
+                alt="Favorite icon"
+                className="like"
+              />
+              <img
+                src="/mustacheRight.png"
+                alt="Right mustache"
+                className="mustache"
+                ref={rightMustacheRef}
+              />
+            </div>
           </button>
-        </>
-      ) : (
-        <p>Информация о породе недоступна.</p>
-      )}
-    </div>
-  );
-};
+        )}
+      </div>
+    );
+  }
+);

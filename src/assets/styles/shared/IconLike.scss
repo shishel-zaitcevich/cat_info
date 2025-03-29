@@ -1,5 +1,5 @@
 .svg-container {
-  cursor: pointer;
+  cursor: url('/touchCursor2.png'), pointer;
   display: inline-block;
   transition: transform 0.3s ease-in-out;
 }

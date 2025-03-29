@@ -7,10 +7,10 @@ import { catApi } from '../api/catApi';
 export const store = configureStore({
   reducer: {
     cats: catReducer,
-    [catApi.reducerPath]: catApi.reducer, // Добавляем редюсер RTK Query
+    [catApi.reducerPath]: catApi.reducer, 
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(catApi.middleware), // Подключаем middleware RTK Query
+    getDefaultMiddleware().concat(catApi.middleware), 
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -30,7 +30,7 @@ body {
     }
 
     .scroll-animation {
-      cursor: pointer;
+      cursor: url('/touchCursor2.png'), pointer;
       margin: 2rem 0;
 
       svg {

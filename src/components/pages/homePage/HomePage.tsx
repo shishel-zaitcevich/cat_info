@@ -90,7 +90,10 @@ const HomePage: React.FC = () => {
       {isLoading ? (
         <Cat />
       ) : (
-        <div style={{ visibility: isLoaded ? 'visible' : 'hidden' }}>
+        <div
+          style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
+          className="home-page"
+        >
           <CatsSection />
           <div
             style={{

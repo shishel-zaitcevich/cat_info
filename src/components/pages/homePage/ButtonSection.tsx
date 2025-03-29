@@ -47,6 +47,7 @@ export function ButtonSection() {
             borderRadius: '10px',
             fontWeight: '600',
           }}
+          className="home-button"
         >
           Go to Gallery
         </Button>

@@ -13,20 +13,17 @@ $size-mobile: 80px;
   height: $size-desktop;
   margin: 0 auto;
 
-  // Адаптивность для планшетов
   @media (max-width: 768px) {
     width: $size-tablet * 1.13;
     height: $size-tablet;
   }
 
-  // Адаптивность для мобильных
   @media (max-width: 480px) {
     width: $size-mobile * 1.13;
     height: $size-mobile;
   }
 }
 
-// Ears
 .ear {
   position: absolute;
   top: -30%;
@@ -44,7 +41,6 @@ $size-mobile: 80px;
     border-radius: 50%;
     background: $color-black;
 
-    // Уменьшаем размер на мобильных
     @media (max-width: 480px) {
       height: 8%;
       width: 4%;
@@ -86,7 +82,6 @@ $size-mobile: 80px;
   }
 }
 
-// Face
 .face {
   position: absolute;
   height: 100%;
@@ -95,7 +90,6 @@ $size-mobile: 80px;
   border-radius: 50%;
 }
 
-// Eyes
 .eye {
   position: absolute;
   top: 35%;
@@ -116,7 +110,6 @@ $size-mobile: 80px;
     animation: blink 4s infinite ease-in;
   }
 
-  // Уменьшаем глаза на мобильных
   @media (max-width: 480px) {
     height: 28%;
     width: 29%;
@@ -154,7 +147,6 @@ $size-mobile: 80px;
   }
 }
 
-// Pupils
 .pupil {
   position: absolute;
   top: 25%;
@@ -198,7 +190,6 @@ $size-mobile: 80px;
     border-radius: 50%;
     background: $color-white;
 
-    // Уменьшаем блик на мобильных
     @media (max-width: 480px) {
       height: 18%;
       width: 32%;
@@ -206,7 +197,6 @@ $size-mobile: 80px;
   }
 }
 
-// Muzzle
 .muzzle {
   position: absolute;
   top: 60%;
@@ -217,7 +207,6 @@ $size-mobile: 80px;
   transform: translateX(-50%);
   border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
 
-  // Корректируем размер на меньших экранах
   @media (max-width: 768px) {
     height: 5%;
     width: 9%;

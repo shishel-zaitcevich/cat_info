@@ -31,6 +31,9 @@
 
         .cat-name {
           color: #fff;
+          @media (max-width: 520px) {
+            margin: 0px;
+          }
         }
 
         .cat-img {
@@ -53,6 +56,11 @@
           @media (max-width: 768px) {
             max-width: 80%;
           }
+
+          @media (max-width: 520px) {
+            max-width: 100%;
+            font-size: 14px;
+          }
         }
 
         .button-favourite {
@@ -60,12 +68,13 @@
           height: 80px;
           background-color: transparent;
           border: none;
-          cursor: pointer;
+          cursor: url('/touchCursor2.png'), pointer;
         }
       }
 
       .grey {
-        background-color: #444444;
+        // background-color: #444444;
+        background-color: #1a1316;
       }
 
       .black {
@@ -85,10 +94,3 @@
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-
-/* Убедитесь, что у вас есть базовые стили для .section */
-
-/* Убедитесь, что у вас есть базовые стили для .details */
-// .details {
-//   visibility: hidden; /* Изначально скрыты */
-// }

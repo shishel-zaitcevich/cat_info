@@ -1,7 +1,9 @@
-import '../../../assets/styles/homePage/GallerySection.scss';
+import { useCallback, useState } from 'react';
+
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useCallback, useState } from 'react';
+
+import '../../../assets/styles/homePage/GallerySection.scss';
 
 export function GallerySection() {
   const [imagesLoaded, setImagesLoaded] = useState(0);

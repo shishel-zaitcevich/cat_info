@@ -1,9 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap');
+
 .button-favourite {
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  font-family: 'Catamaran', sans-serif;
+  @media (max-width: 520px) {
+    margin-top: 10px;
+  }
 
-  .like:hover {
-    stroke: red !important; /* Цвет при наведении */
-    transform: scale(1.1);
-    transition: scale 0.3s ease-in-out;
+  .like {
+    max-width: 44px;
+    max-height: 45px;
+  }
+
+  .like-button__text {
+    margin: 0;
+    margin-bottom: -10px;
+
+    @media (max-width: 520px) {
+      margin-bottom: 0;
+    }
+  }
+
+  .like-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .mustache {
+      max-width: 120px;
+      @media (max-width: 520px) {
+        max-width: 60px;
+      }
+    }
   }
 }
