@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import { MutableRefObject } from 'react';
 
 
-const useCatListAnimation = (isRendered: boolean,  detailRefs: MutableRefObject<(HTMLDivElement | null)[]>,  imageRefs: MutableRefObject<(HTMLImageElement | null)[]>,
+const useCatListAnimation = (isRendered: boolean,   buttonsFavRefs: MutableRefObject<(HTMLDivElement | null)[]>,  imageRefs: MutableRefObject<(HTMLImageElement | null)[]>,
 headingRefs: MutableRefObject<(HTMLHeadingElement | null)[]>,
 descriptionRefs: MutableRefObject<(HTMLParagraphElement | null)[]>,) => {
 
@@ -18,30 +18,30 @@ descriptionRefs: MutableRefObject<(HTMLParagraphElement | null)[]>,) => {
       const images = imageRefs.current.filter(Boolean);
       const headings = headingRefs.current.filter(Boolean);
       const descriptions = descriptionRefs.current.filter(Boolean);
-      const details = detailRefs.current.filter(Boolean);
+      const buttonFavourite = buttonsFavRefs.current.filter(Boolean);
 
       console.log('sections', sections.length);
       console.log('outerWrappers', outerWrappers.length);
       console.log('innerWrappers', innerWrappers.length);
   
-      console.log('detailRefs', detailRefs)
+      console.log('buttonsFavRefs', buttonsFavRefs)
       console.log('imageRefs', imageRefs)
       console.log('isRendered', isRendered)
 
-      console.log('detailRefs.current', detailRefs.current);
+      console.log('buttonsFavRefs.current', buttonsFavRefs.current);
   
-      if (
-        sections.length === 0 ||
-        outerWrappers.length === 0 ||
-        innerWrappers.length === 0 ||
-        details.length !== sections.length || 
-        images.length !== sections.length ||
-        headings.length !== sections.length ||
-        descriptions.length !== sections.length
-      ) {
-        console.warn("Некоторые элементы или рефы отсутствуют, анимация не запускается.");
-        return;
-      }
+      // if (
+      //   sections.length === 0 ||
+      //   outerWrappers.length === 0 ||
+      //   innerWrappers.length === 0 ||
+      //   details.length !== sections.length ||
+      //   images.length !== sections.length ||
+      //   headings.length !== sections.length ||
+      //   descriptions.length !== sections.length
+      // ) {
+      //   console.warn("Некоторые элементы или рефы отсутствуют, анимация не запускается.");
+      //   return;
+      // }
 
       let currentIndex = -1;
       let animating = false;
@@ -120,7 +120,7 @@ descriptionRefs: MutableRefObject<(HTMLParagraphElement | null)[]>,) => {
           }
         )
         .fromTo(
-          details[index],
+          buttonFavourite[index],
           { autoAlpha: 0, yPercent: elementStartY },
           { 
             autoAlpha: 1, 
@@ -183,7 +183,7 @@ descriptionRefs: MutableRefObject<(HTMLParagraphElement | null)[]>,) => {
         window.removeEventListener('wheel', handleWheel);
       };
     }, 100);
-  }, [isRendered, detailRefs, imageRefs]);
+  }, [isRendered, buttonsFavRefs, imageRefs]);
 
   return null;
 };

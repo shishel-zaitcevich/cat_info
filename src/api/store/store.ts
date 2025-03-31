@@ -1,12 +1,11 @@
-
 import { configureStore } from '@reduxjs/toolkit';
-import catReducer from '../store/catSlice';
-import { catApi } from '../api/catApi';
 
+import scrollReducer from './scrollSlice';
+import { catApi } from '../catApi';
 
 export const store = configureStore({
   reducer: {
-    cats: catReducer,
+    scroll: scrollReducer,
     [catApi.reducerPath]: catApi.reducer, 
   },
   middleware: (getDefaultMiddleware) =>

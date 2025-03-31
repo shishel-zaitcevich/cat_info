@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import CatGalleryPage from './components/pages/galleryPage/CatGalleryPage';
 import HomePage from './components/pages/homePage/HomePage';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
+import { store } from './api/store/store';
 
 const App: React.FC = () => {
   return (

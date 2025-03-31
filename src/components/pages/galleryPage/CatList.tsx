@@ -1,12 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import { useFetchCatImagesQuery } from '../../../api/catApi';
-import { CatDetail } from './CatDetail';
+import { useSectionScrollAnimation } from '../../../hooks/useSectionScrollAnimation';
+
+import Cat from '../../shared/preloader/Cat';
+import CatCard from './CatCard/CatCard';
+
 import '../../../assets/styles/CatList.scss';
 
-import useCatListAnimation from '../../../hooks/useCatListAnimation';
-import Cat from '../../shared/preloader/Cat';
-
-interface Cat {
+export interface Cat {
   id: string;
   url: string;
   breeds: Array<{
@@ -18,16 +20,10 @@ interface Cat {
 const CatList: React.FC = () => {
   const { data: cats = [], isLoading } = useFetchCatImagesQuery(10);
   const [isRendered, setIsRendered] = useState(false);
-
   const [isVisible, setIsVisible] = useState(false);
-  const detailRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const headingRefs = useRef<(HTMLHeadingElement | null)[]>([]);
-  const descriptionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
   useEffect(() => {
     if (cats.length > 0) {
-      detailRefs.current = Array(cats.length).fill(null);
       const timer = setTimeout(() => {
         setIsRendered(true);
         setIsVisible(true);
@@ -36,61 +32,26 @@ const CatList: React.FC = () => {
     }
   }, [cats]);
 
-  useCatListAnimation(
-    isRendered,
-    detailRefs,
-    imageRefs,
-    headingRefs,
-    descriptionRefs
-  );
+  useSectionScrollAnimation(isRendered);
 
   if (isLoading) return <Cat />;
 
   return (
-    <>
-      <section className={`cat-list ${isVisible ? 'visible' : 'hidden'}`}>
-        {cats.map((cat: Cat, index: number) => (
-          <div key={cat.id} className="section cat-item">
-            <div className="wrapper-outer">
-              <div className="wrapper-inner">
-                <div
-                  className={`background ${index % 2 === 0 ? 'black' : 'grey'}`}
-                >
-                  <img
-                    src={cat.url}
-                    alt={cat.breeds[0]?.name || 'Cat'}
-                    className="cat-img"
-                    loading="lazy"
-                    ref={(el) => (imageRefs.current[index] = el)}
-                  />
-                  <h2
-                    className="cat-name"
-                    ref={(el) => (headingRefs.current[index] = el)}
-                  >
-                    {cat.breeds[0]?.name || 'Без породы'}
-                  </h2>
-                  <p
-                    className="cat-description"
-                    ref={(el) => (descriptionRefs.current[index] = el)}
-                  >
-                    {cat.breeds[0]?.description || 'Описание отсутствует'}
-                  </p>
-                  <CatDetail
-                    className="cat-details"
-                    ref={(el) => {
-                      if (el) {
-                        detailRefs.current[index] = el;
-                        console.log(`✅ detailRefs[${index}] заполнен:`, el);
-                      }
-                    }}
-                  />
-                </div>
+    <section className={`cat-list ${isVisible ? 'visible' : 'hidden'}`}>
+      {cats.map((cat, index) => (
+        <div key={cat.id} className="section cat-item">
+          <div className="wrapper-outer">
+            <div className="wrapper-inner">
+              <div
+                className={`background ${index % 2 === 0 ? 'black' : 'grey'}`}
+              >
+                <CatCard cat={cat} index={index} />
               </div>
             </div>
           </div>
-        ))}
-      </section>
-    </>
+        </div>
+      ))}
+    </section>
   );
 };
 

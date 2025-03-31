@@ -1,0 +1,45 @@
+.cat__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .cat__name {
+    color: #fff;
+    @media (max-width: 520px) {
+      margin: 0px;
+    }
+  }
+
+  .cat__img {
+    max-width: 900px;
+    width: auto;
+    max-height: 500px;
+    height: auto;
+    @media (max-width: 540px) {
+      max-width: 340px;
+      max-height: 300px;
+    }
+  }
+
+  .cat__description {
+    color: #fff;
+    max-width: 40%;
+    text-align: center;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      max-width: 80%;
+    }
+
+    @media (max-width: 520px) {
+      max-width: 100%;
+      font-size: 14px;
+    }
+  }
+
+  .cat__favourite {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

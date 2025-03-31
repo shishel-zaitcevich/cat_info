@@ -14,7 +14,7 @@ export function GallerySection() {
   const isTablet = window.innerWidth <= 768;
   const isMobile = window.innerWidth <= 520;
 
-  console.log(isMobile);
+  // console.log(isMobile);
 
   const handleImageLoad = useCallback(() => {
     setImagesLoaded((prev) => prev + 1);

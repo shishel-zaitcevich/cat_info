@@ -1,10 +1,12 @@
 import { useRef } from "react";
+import { RefObject } from "react";
 
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
 
-export const useMustachesShakeAnimation = () => {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+export const useMustachesShakeAnimation = (buttonRef: RefObject<HTMLButtonElement>) => {
+
   const leftMustacheRef = useRef<HTMLImageElement | null>(null);
   const rightMustacheRef = useRef<HTMLImageElement | null>(null);
   
@@ -16,7 +18,6 @@ export const useMustachesShakeAnimation = () => {
     const rightMustache = rightMustacheRef.current;
 
     if (!button || !leftMustache || !rightMustache) {
-      console.warn("Элементы для анимации усов отсутствуют.");
       return;
     }
 
@@ -24,6 +25,11 @@ export const useMustachesShakeAnimation = () => {
 
       if (tlRef.current) {
         tlRef.current.kill();
+      }
+
+      if (!leftMustache || !rightMustache) {
+        console.warn("Элементы усов не найдены!");
+        return;
       }
       
       tlRef.current = gsap.timeline();

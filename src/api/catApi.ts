@@ -96,7 +96,7 @@ export const catApi = createApi({
     }),
 
   fetchFavorites: builder.query<Favourite[], { subId: string; page?: number; limit?: number }>({
-    query: ({ subId, page = 1, limit = 10 }) =>
+    query: ({ subId, page = 1, limit = 30 }) =>
       `favourites?sub_id=${subId}&limit=${limit}&page=${page}&order=DESC`,
     providesTags: ["Favorite"],
   }),

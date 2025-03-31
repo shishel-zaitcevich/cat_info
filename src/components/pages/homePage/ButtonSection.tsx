@@ -15,7 +15,7 @@ export function ButtonSection() {
   const handleMouseEnter = () => {
     if (buttonRef.current) {
       const buttonRect = buttonRef.current.getBoundingClientRect();
-      console.log(buttonRect);
+      // console.log(buttonRect);
       animateImagesEnter(buttonRect, imagesRef);
     }
   };
