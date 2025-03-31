@@ -27,7 +27,7 @@ const useCatCardAnimation = ({ cardRef, imageRef, headingRef, descriptionRef, bu
           autoAlpha: 0,
           yPercent: 50
         });
-      }, []);
+      }, [isImageLoaded]);
 
     useEffect(() => {
       const img = imageRef.current;
