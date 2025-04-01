@@ -1,0 +1,34 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CatDetailsProps } from '../../components/pages/galleryPage/CatDetails/CatDetails';
+
+interface ModalState {
+  isOpen: boolean;
+  modalData: { type: string; props?: CatDetailsProps } | null;
+}
+
+const initialState: ModalState = {
+  isOpen: false,
+  modalData: null,
+};
+
+const modalSlice = createSlice({
+  name: 'modal',
+  initialState,
+  reducers: {
+    openModal: (state, action: PayloadAction<{ type: string; props?: CatDetailsProps }>) => {
+      state.isOpen = true;
+      state.modalData = action.payload;
+    },
+    closeModal: (state) => {
+      state.isOpen = false;
+      state.modalData = null;
+    },
+    toggleModal: (state, action: PayloadAction<{ type: string; props?: CatDetailsProps }>) => {
+      state.isOpen = !state.isOpen;
+      state.modalData = state.isOpen ? null : action.payload;
+    },
+  },
+});
+
+export const { openModal, closeModal, toggleModal } = modalSlice.actions;
+export default modalSlice.reducer;

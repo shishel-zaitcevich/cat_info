@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useFetchCatImagesQuery } from '../../../api/catApi';
 import { useSectionScrollAnimation } from '../../../hooks/useSectionScrollAnimation';
@@ -7,6 +7,7 @@ import Cat from '../../shared/preloader/Cat';
 import CatCard from './CatCard/CatCard';
 
 import '../../../assets/styles/CatList.scss';
+import ButtonHome from '../../shared/ButtonHome/ButtonHome';
 
 export interface Cat {
   id: string;
@@ -21,6 +22,7 @@ const CatList: React.FC = () => {
   const { data: cats = [], isLoading } = useFetchCatImagesQuery(10);
   const [isRendered, setIsRendered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const redRoundRef = useRef<HTMLImageElement | null>(null);
 
   useEffect(() => {
     if (cats.length > 0) {
@@ -38,6 +40,7 @@ const CatList: React.FC = () => {
 
   return (
     <section className={`cat-list ${isVisible ? 'visible' : 'hidden'}`}>
+      <ButtonHome redRoundRef={redRoundRef} />
       {cats.map((cat, index) => (
         <div key={cat.id} className="section cat-item">
           <div className="wrapper-outer">
@@ -45,7 +48,7 @@ const CatList: React.FC = () => {
               <div
                 className={`background ${index % 2 === 0 ? 'black' : 'grey'}`}
               >
-                <CatCard cat={cat} index={index} />
+                <CatCard cat={cat} index={index} className="cat-card" />
               </div>
             </div>
           </div>

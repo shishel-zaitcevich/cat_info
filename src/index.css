@@ -17,8 +17,7 @@ body{
   background-color: #000;
   overflow: hidden;
   margin: 0;
-cursor: url('/cat_paw1.png'), auto;
-
+  cursor: url('/cat_paw1.png'), auto;
 }
 
 

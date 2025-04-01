@@ -4,15 +4,19 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import '../../../assets/styles/homePage/GallerySection.scss';
+import { useWindowSize } from 'usehooks-ts';
 
 export function GallerySection() {
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
+  const { width } = useWindowSize();
+  const TABLET_BREAKPOINT = 768;
+  const MOBILE_BREAKPOINT = 540;
+  const isTablet = width < TABLET_BREAKPOINT;
+  const isMobile = width < MOBILE_BREAKPOINT;
+
   const totalImages = 3;
   const allImagesLoaded = imagesLoaded === totalImages;
-
-  const isTablet = window.innerWidth <= 768;
-  const isMobile = window.innerWidth <= 520;
 
   // console.log(isMobile);
 
@@ -39,16 +43,16 @@ export function GallerySection() {
     const images = ['.one', '.two', '.three'];
 
     if (isMobile) {
-      gsap.set(images, { scale: 0.6 });
-      gsap.to(images, {
-        scale: 1,
-        scrollTrigger: {
-          trigger: '.gallery__section',
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: 0.5,
-        },
-      });
+      gsap.set(images, { scale: 0.9 });
+      // gsap.to(images, {
+      //   scale: 1,
+      //   scrollTrigger: {
+      //     trigger: '.gallery__section',
+      //     start: 'top 80%',
+      //     end: 'bottom 20%',
+      //     scrub: 0.5,
+      //   },
+      // });
     } else {
       gsap.set(images, { opacity: 0.65, scale: 1 });
       images.forEach((selector) => {

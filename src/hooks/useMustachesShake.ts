@@ -36,7 +36,7 @@ export const useMustachesShakeAnimation = (buttonRef: RefObject<HTMLButtonElemen
       
       tlRef.current.to({}, {
         duration: 0.05,
-        repeat: -1,
+        repeat: 8,
         onUpdate: function() {
    
           const randomY = gsap.utils.random(-2, 2);

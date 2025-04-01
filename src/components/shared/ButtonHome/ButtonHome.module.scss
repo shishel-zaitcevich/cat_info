@@ -1,0 +1,46 @@
+.button__home {
+  position: fixed;
+  z-index: 3;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: url('/touchCursor2.png'), pointer;
+
+  .home {
+    max-width: 120px;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      max-width: 40px;
+    }
+  }
+
+  .red__round {
+    position: absolute;
+    top: 50px;
+    left: 23px;
+    z-index: 2;
+    width: 30px;
+
+    @media (max-width: 520px) {
+      top: 33px;
+      left: 12px;
+      height: 40px;
+      width: 20px;
+    }
+  }
+
+  .home__link {
+    padding-top: 20px;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      padding-top: 0;
+      font-size: 12px;
+    }
+  }
+}
