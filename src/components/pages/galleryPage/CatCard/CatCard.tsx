@@ -20,6 +20,7 @@ interface CatCardProps {
 
 const CatCard = ({ cat, index, className }: CatCardProps) => {
   const dispatch = useDispatch();
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   // const subId = 'user-99568';
 
@@ -39,7 +40,7 @@ const CatCard = ({ cat, index, className }: CatCardProps) => {
   return (
     <div ref={refs.cardRef} className={classNames(s.cat__card, className)}>
       <div className={s.cat__container}>
-        <div className={s.image}>
+        <div className={s.image} ref={imageContainerRef}>
           <img
             src={cat.url}
             alt={cat.breeds[0]?.name || 'Cat'}
@@ -71,6 +72,7 @@ const CatCard = ({ cat, index, className }: CatCardProps) => {
             subId={subId}
             className={s.cat__favourite}
             ref={refs.buttonFavRef}
+            imageContainerRef={imageContainerRef}
           />
         )}
       </div>
