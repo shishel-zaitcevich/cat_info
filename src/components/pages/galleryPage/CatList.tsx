@@ -10,10 +10,10 @@ import '../../../assets/styles/CatList.scss';
 import ButtonHome from '../../shared/ButtonHome/ButtonHome';
 import { RootState } from '../../../api/store/store';
 import { useSelector } from 'react-redux';
-import {
-  animateImagesEnter,
-  animateImagesLeave,
-} from '../../../utils/homeButtonAnimation';
+// import {
+//   animateImagesEnter,
+//   animateImagesLeave,
+// } from '../../../utils/homeButtonAnimation';
 
 import s from './CatList.module.scss';
 
@@ -58,7 +58,7 @@ const CatList: React.FC = () => {
       }, 300);
 
       return () => {
-        animateImagesLeave(imagesRef);
+        // animateImagesLeave(imagesRef);
         clearTimeout(timer);
       };
     }
