@@ -1,0 +1,13 @@
+.galleryImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+
+  img {
+    width: 50px;
+    border-radius: 8px;
+    rotate: 130deg;
+  }
+}

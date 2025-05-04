@@ -1,0 +1,11 @@
+.home__page {
+  position: relative;
+  .authWrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    width: 95px;
+    height: 70px;
+  }
+}

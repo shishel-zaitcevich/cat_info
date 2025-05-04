@@ -28,40 +28,46 @@ export function ButtonSection() {
   const isMobile = window.innerWidth <= 520;
 
   return (
-    <div className="gallery-button-container " data-scroll data-scroll-section>
-      <Link to={'/gallery'} data-scroll>
-        <Button
-          ref={buttonRef}
-          variant="contained"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          sx={{
-            maxWidth: '300px',
-            width: isMobile ? '220px' : '100%',
-            maxHeight: '70px',
-            height: isMobile ? '50px' : '100%',
-            fontSize: isMobile ? '2rem' : '1.5rem',
-            backgroundColor: '#aab1b7',
-            marginLeft: isMobile ? '0' : isTablet ? '150%' : '90%',
-            marginTop: isMobile ? '520px' : '0',
-            borderRadius: '10px',
-            fontWeight: '600',
-          }}
-          className="home-button"
-        >
-          Go to Gallery
-        </Button>
-      </Link>
+    <>
+      <div
+        className="gallery-button-container "
+        data-scroll
+        data-scroll-section
+      >
+        <Link to={'/gallery'} data-scroll>
+          <Button
+            ref={buttonRef}
+            variant="contained"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            sx={{
+              maxWidth: '300px',
+              width: isMobile ? '220px' : '100%',
+              maxHeight: '70px',
+              height: isMobile ? '50px' : '100%',
+              fontSize: isMobile ? '2rem' : '1.5rem',
+              backgroundColor: '#aab1b7',
+              marginLeft: isMobile ? '0' : isTablet ? '150%' : '90%',
+              marginTop: isMobile ? '520px' : '0',
+              borderRadius: '10px',
+              fontWeight: '600',
+            }}
+            className="home-button"
+          >
+            Go to Gallery
+          </Button>
+        </Link>
 
-      {[0, 1, 2, 3].map((_, index) => (
-        <div
-          key={index}
-          ref={(el) => (imagesRef.current[index] = el!)}
-          className="gallery-image"
-        >
-          <img src="/paw.png" alt="Gallery" data-scroll />
-        </div>
-      ))}
-    </div>
+        {[0, 1, 2, 3].map((_, index) => (
+          <div
+            key={index}
+            ref={(el) => (imagesRef.current[index] = el!)}
+            className="gallery-image"
+          >
+            <img src="/paw.png" alt="Gallery" data-scroll />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

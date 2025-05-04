@@ -10,6 +10,7 @@ import FavouriteButton from '../FavouriteButton';
 import useCatCardAnimation from '../../../../hooks/useCatCardAnimation';
 
 import s from './CatCard.module.scss';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 interface CatCardProps {
   cat: Cat;
@@ -20,7 +21,10 @@ interface CatCardProps {
 const CatCard = ({ cat, index, className }: CatCardProps) => {
   const dispatch = useDispatch();
 
-  const subId = 'user-99568';
+  // const subId = 'user-99568';
+
+  const subId = useAppSelector((state) => state.auth.subId);
+
   const refs = {
     cardRef: useRef<HTMLDivElement>(null),
     imageRef: useRef<HTMLImageElement>(null),
@@ -61,12 +65,14 @@ const CatCard = ({ cat, index, className }: CatCardProps) => {
         <p className={s.cat__description} ref={refs.descriptionRef}>
           {cat.breeds[0]?.description || 'Описание отсутствует'}
         </p>
-        <FavouriteButton
-          catId={cat.id}
-          subId={subId}
-          className={s.cat__favourite}
-          ref={refs.buttonFavRef}
-        />
+        {subId && (
+          <FavouriteButton
+            catId={cat.id}
+            subId={subId}
+            className={s.cat__favourite}
+            ref={refs.buttonFavRef}
+          />
+        )}
       </div>
     </div>
   );

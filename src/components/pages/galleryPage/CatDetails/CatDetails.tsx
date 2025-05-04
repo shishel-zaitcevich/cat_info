@@ -16,7 +16,7 @@ const CatDetails: React.FC<CatDetailsProps> = ({ index }) => {
   const breed = cats[index].breeds[0];
 
   return (
-    <div className={s.catCard}>
+    <div className={s.catDetails}>
       <img src={cats[index].url} alt={breed.name} className={s.catImage} />
       <div className={s.catName}>{breed.name}</div>
       <div className={s.catInfo}>

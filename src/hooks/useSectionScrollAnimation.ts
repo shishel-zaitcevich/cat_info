@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { setActiveIndex, setDirection } from "../api/store/scrollSlice";
 import { useDispatch } from "react-redux";
 
-export const useSectionScrollAnimation = (isRendered: boolean) => {
+export const useSectionScrollAnimation = (isRendered: boolean, isModalOpen: boolean) => {
   const dispatch = useDispatch();
   const currentIndexRef = useRef<number>(-1);
   
@@ -14,7 +14,15 @@ export const useSectionScrollAnimation = (isRendered: boolean) => {
   const minSwipeDistance = 50; 
   
   useGSAP(() => {
-    if (!isRendered) return;
+    // if (!isRendered) return;
+
+    console.log('useGSAP triggered, isModalOpen:', isModalOpen, 'isRendered:', isRendered);
+
+    // Прерываем выполнение, если не рендерится или модальное окно открыто
+    if (!isRendered || isModalOpen) {
+      console.log('Skipping animation setup due to isModalOpen or !isRendered');
+      return;
+    }
     
     setTimeout(() => {
       const sections = document.querySelectorAll<HTMLElement>('.section');
@@ -124,6 +132,7 @@ export const useSectionScrollAnimation = (isRendered: boolean) => {
       gotoSection(0, 1);
       
       return () => {
+        console.log(`Cleaning up event listeners`);
         window.removeEventListener('wheel', handleWheel);
         document.removeEventListener('touchstart', handleTouchStart);
         document.removeEventListener('touchmove', handleTouchMove);
@@ -131,5 +140,5 @@ export const useSectionScrollAnimation = (isRendered: boolean) => {
         window.removeEventListener('keydown', handleKeyDown);
       };
     }, 100);
-  }, [isRendered, dispatch]);
+  }, [isRendered, isModalOpen, dispatch]);
 };

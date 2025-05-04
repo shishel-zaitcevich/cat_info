@@ -11,6 +11,11 @@ import ReactLenis, { LenisRef } from 'lenis/react';
 import 'lenis/dist/lenis.css';
 import React from 'react';
 
+import Modal from '../../../features/Modal/Modal';
+import AuthButton from '../../shared/AuthButton/AuthButton';
+import s from './HomePage.module.scss';
+import classNames from 'classnames';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const HomePage: React.FC = () => {
@@ -92,8 +97,11 @@ const HomePage: React.FC = () => {
       ) : (
         <div
           style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
-          className="home-page"
+          className={classNames(s.home__page, 'home-page')}
         >
+          <div className={s.authWrapper}>
+            <AuthButton />
+          </div>
           <CatsSection />
           <div
             style={{
@@ -113,7 +121,14 @@ const HomePage: React.FC = () => {
       {isLoading ? (
         <Cat />
       ) : (
-        <div style={{ visibility: isLoaded ? 'visible' : 'hidden' }}>
+        <div
+          style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
+          className={s.home__page}
+        >
+          {/* <AuthButton className={s.authBtn} /> */}
+          <div className={s.authWrapper}>
+            <AuthButton />
+          </div>
           <CatsSection />
           <div
             style={{
@@ -125,6 +140,7 @@ const HomePage: React.FC = () => {
             <GallerySection />
             <ButtonSection />
           </div>
+          <Modal />
         </div>
       )}
     </ReactLenis>
