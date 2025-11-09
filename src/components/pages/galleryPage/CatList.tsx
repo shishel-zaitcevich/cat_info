@@ -10,10 +10,9 @@ import '../../../assets/styles/CatList.scss';
 import ButtonHome from '../../shared/ButtonHome/ButtonHome';
 import { RootState } from '../../../api/store/store';
 import { useSelector } from 'react-redux';
-// import {
-//   animateImagesEnter,
-//   animateImagesLeave,
-// } from '../../../utils/homeButtonAnimation';
+
+import WaveBackground from '../../shared/Backgrounds/WaveBackground';
+import NebulaPurpleBackground from '../../shared/Backgrounds/NebulaPurpleBackground';
 
 import s from './CatList.module.scss';
 
@@ -36,13 +35,6 @@ const CatList: React.FC = () => {
 
   const { isOpen } = useSelector((state: RootState) => state.modal);
 
-  // useEffect(() => {
-  //   if (isVisible && redRoundRef.current) {
-  //     const buttonRect = redRoundRef.current.getBoundingClientRect();
-  //     animateImagesEnter(buttonRect, imagesRef, 'left-diagonal-down');
-  //   }
-  // }, [isVisible]);
-
   useEffect(() => {
     console.log(
       'useEffect triggered, isOpen:',
@@ -58,13 +50,10 @@ const CatList: React.FC = () => {
       }, 300);
 
       return () => {
-        // animateImagesLeave(imagesRef);
         clearTimeout(timer);
       };
     }
   }, [cats, isOpen]);
-
-  // useSectionScrollAnimation(isRendered);
 
   useSectionScrollAnimation(isRendered, isOpen);
 
@@ -74,27 +63,27 @@ const CatList: React.FC = () => {
     <section className={`cat-list ${isVisible ? 'visible' : 'hidden'}`}>
       <ButtonHome redRoundRef={redRoundRef} />
 
-      {cats.map((cat, index) => (
-        <div key={cat.id} className="section cat-item" ref={sectionRef}>
-          <div className="wrapper-outer">
-            <div className="wrapper-inner">
-              <div
-                className={`background ${index % 2 === 0 ? 'black' : 'grey'}`}
-              >
-                <CatCard cat={cat} index={index} className="cat-card" />
+      {cats.map((cat, index) => {
+        const BackgroundComponent =
+          index % 2 === 0 ? NebulaPurpleBackground : WaveBackground;
+
+        return (
+          <div key={cat.id} className="section cat-item" ref={sectionRef}>
+            <div className="wrapper-outer">
+              <div className="wrapper-inner">
+                <BackgroundComponent>
+                  <CatCard cat={cat} index={index} className="cat-card" />
+                </BackgroundComponent>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       {[...Array(11)].map((_, index) => (
         <div
           key={index}
           ref={(el) => (imagesRef.current[index] = el!)}
-          // ref={(el) => {
-          //   if (el) imagesRef.current[index] = el;
-          // }}
           className={s.galleryImage}
         >
           <img src="/paw.png" alt="Gallery" />

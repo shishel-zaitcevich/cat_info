@@ -34,6 +34,9 @@ img {
 .gallery-page {
   position: relative;
   font-family: 'Catamaran', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 
   .auth-wrapper {
     position: absolute;
@@ -42,5 +45,33 @@ img {
     z-index: 10;
     width: 95px;
     height: 70px;
+  }
+
+  .chatBot {
+    z-index: 10;
+    position: fixed;
+    left: 10%;
+    top: 10%;
+    max-width: 600px;
+    width: 100%;
+
+    @media (max-width: 1580px) {
+      max-width: 30%;
+      // margin-left: 120px;
+    }
+
+    // @media (max-width: 1080px) {
+    //   max-width: 440px;
+    //   margin-left: 120px;
+    // }
+
+    // @media (max-width: 800px) {
+    //   margin-left: 0;
+    // }
+
+    // @media (max-width: 540px) {
+    //   max-width: 340px;
+    //   max-height: 300px;
+    // }
   }
 }

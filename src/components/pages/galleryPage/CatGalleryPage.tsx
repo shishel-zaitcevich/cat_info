@@ -4,6 +4,7 @@ import Modal from '../../../features/Modal/Modal';
 
 import '../../../assets/styles/CatGalleryPage.scss';
 import AuthButton from '../../shared/AuthButton/AuthButton';
+import ChatBot from '../../shared/Chatbot/ChatBot';
 
 const CatGalleryPage: React.FC = () => {
   return (
@@ -13,7 +14,9 @@ const CatGalleryPage: React.FC = () => {
           <AuthButton />
         </div>
 
+        <ChatBot className="chatBot" />
         <CatList />
+
         <Modal />
       </section>
     </main>
