@@ -10,8 +10,8 @@ export function GallerySection() {
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const { width } = useWindowSize();
-  const TABLET_BREAKPOINT = 768;
-  const MOBILE_BREAKPOINT = 540;
+  const TABLET_BREAKPOINT = 900;
+  const MOBILE_BREAKPOINT = 520;
   const isTablet = width < TABLET_BREAKPOINT;
   const isMobile = width < MOBILE_BREAKPOINT;
 
@@ -31,7 +31,7 @@ export function GallerySection() {
 
     gsap.to('.gallery__section', {
       backgroundSize: isTablet ? '170%' : '100%',
-      backgroundPosition: isTablet ? 'center center' : '50% 70%',
+      backgroundPosition: isTablet ? '80% 20%' : '50% 70%',
       scrollTrigger: {
         trigger: '.gallery__section',
         start: 'top 90%',
@@ -43,16 +43,16 @@ export function GallerySection() {
     const images = ['.one', '.two', '.three'];
 
     if (isMobile) {
-      gsap.set(images, { scale: 0.9 });
-      // gsap.to(images, {
-      //   scale: 1,
-      //   scrollTrigger: {
-      //     trigger: '.gallery__section',
-      //     start: 'top 80%',
-      //     end: 'bottom 20%',
-      //     scrub: 0.5,
-      //   },
-      // });
+      gsap.set(images, { scale: 0.7 });
+      gsap.to(images, {
+        scale: 1.3,
+        scrollTrigger: {
+          trigger: '.gallery__section',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 0.5,
+        },
+      });
     } else {
       gsap.set(images, { opacity: 0.65, scale: 1 });
       images.forEach((selector) => {
@@ -84,8 +84,27 @@ export function GallerySection() {
           toggleActions: 'play reverse play reverse',
         },
       });
+    } else {
+      gsap.set('.galleryHeader', {
+        y: 700,
+        opacity: 0,
+      });
+
+      gsap.to('.galleryHeader', {
+        y: 0,
+        opacity: 1,
+        duration: 6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.gallery__section',
+          start: 'top 80%',
+          end: 'top 30%',
+          scrub: 6,
+          toggleActions: 'play reverse play reverse',
+        },
+      });
     }
-  }, [allImagesLoaded]);
+  }, [allImagesLoaded, isMobile]);
 
   return (
     <div

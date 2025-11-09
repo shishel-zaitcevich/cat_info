@@ -17,6 +17,10 @@
     top: 10px;
     left: 20px;
     max-width: 160px;
+
+    @media screen and (max-width: 900px) {
+      max-width: 100px;
+    }
   }
 
   .bgImage {
@@ -32,10 +36,10 @@
       width: 100vw;
       height: 100vh;
     }
-    @media screen and (max-width: 480px) {
-      width: 150%;
+    @media screen and (max-width: 520px) {
+      width: 220%;
       max-width: none;
-      transform: translateX(-33.33%);
+      transform: translateX(-53.33%);
       left: 0;
     }
   }
@@ -50,10 +54,12 @@
 
     @media screen and (max-width: 768px) {
       font-size: 30vw;
+      margin-top: 200px;
+      margin-bottom: 0;
     }
     @media screen and (max-width: 480px) {
       font-size: 30vw;
-      margin-top: 200px;
+      // margin-top: 200px;
     }
   }
 }
