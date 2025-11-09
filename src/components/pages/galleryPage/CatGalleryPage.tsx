@@ -11,7 +11,7 @@ const CatGalleryPage: React.FC = () => {
     <main>
       <section className="gallery-page">
         <div className="auth-wrapper">
-          <AuthButton className="authBtnImg" />
+          <AuthButton className="authBtnImg" textClassName="textPosition" />
         </div>
 
         <ChatBot className="chatBot" />

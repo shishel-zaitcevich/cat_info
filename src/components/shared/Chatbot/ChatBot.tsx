@@ -94,6 +94,7 @@ const ChatBot: React.FC<ChatbotProps> = ({ className }) => {
         borderRadius: 3,
 
         background: 'transparent',
+        // background: 'rgba(255, 255, 255, 0.2)',
         color: '#fff',
         boxShadow:
           '0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(160, 157, 157, 1), 0 0 40px rgba(139, 0, 0, 0.25),0 0 80px rgba(139, 0, 0, 0.15)',

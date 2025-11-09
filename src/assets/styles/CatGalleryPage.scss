@@ -78,8 +78,17 @@ img {
   }
 
   .authBtnImg {
-    background-image: url(../../../../public/loginimg.png);
+    background-image: url(../../../../public/logoutimg.png);
     max-width: 130px;
     width: 100%;
+    filter: none;
+    transition: filter 0.3s ease;
+
+    .textPosition {
+      top: 59px;
+      right: 19px;
+      transform: none;
+      font-size: 11px;
+    }
   }
 }

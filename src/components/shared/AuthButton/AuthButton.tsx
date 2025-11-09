@@ -9,9 +9,13 @@ import classNames from 'classnames';
 
 interface AuthButtonProps {
   className?: string;
+  textClassName?: string;
 }
 
-const AuthButton: React.FC<AuthButtonProps> = ({ className }) => {
+const AuthButton: React.FC<AuthButtonProps> = ({
+  className,
+  textClassName,
+}) => {
   const dispatch = useAppDispatch();
   const subId = useAppSelector((state) => state.auth.subId);
 
@@ -44,7 +48,9 @@ const AuthButton: React.FC<AuthButtonProps> = ({ className }) => {
 
   return (
     <div className={classNames(s.signUpBtn, className)} onClick={handleClick}>
-      <button className={s.authBtn}>{subId ? 'LOG OUT' : 'SIGN UP'}</button>
+      <button className={classNames(s.authBtn, textClassName)}>
+        {subId ? 'LOG OUT' : 'LOG IN'}
+      </button>
     </div>
   );
 };
