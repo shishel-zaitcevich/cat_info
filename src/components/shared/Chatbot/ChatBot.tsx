@@ -32,7 +32,8 @@ const ChatBot: React.FC<ChatbotProps> = ({ className }) => {
   const [input, setInput] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  // const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_URL || '';
 
   const sendMessage = async (): Promise<void> => {
     if (!input.trim()) return;
