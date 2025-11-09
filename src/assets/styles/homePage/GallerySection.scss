@@ -4,10 +4,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-image: url('https://nek.netlify.app/assets/images/night_rocks_ocean.jpg');
+  // background-image: url('https://nek.netlify.app/assets/images/night_rocks_ocean.jpg');
+
+  background-image: url('../../../../public/deniz-uzuner-0ZffcNJ7jP0-unsplash.jpg');
   background-repeat: no-repeat;
   background-size: 270%;
-  background-position: 50% 100%;
+  // background-position: 50% 100%;
+  background-position: 50% 70%;
   border: white 20px solid;
   margin: 0 auto;
   position: relative;
@@ -20,20 +23,34 @@
 
   .one {
     border-radius: 1rem;
-    bottom: 0vh;
-    right: 5rem;
-    width: 40vw;
+    bottom: -6vh;
+    right: 8rem;
+    width: 49vw;
+
+    @media (max-height: 1700px) {
+      bottom: -10vh;
+    }
+
+    @media (max-height: 1000px) {
+      bottom: -9dvh;
+      right: 3rem;
+    }
   }
 
   .two {
-    left: 5vw;
+    left: -1vw;
     width: 40vw;
   }
 
   .three {
-    right: 12vw;
-    width: 45vw;
+    right: 0vw;
+    width: 42vw;
     top: 0rem;
+
+    @media (max-height: 1000px) {
+      right: 0vw;
+      top: -3rem;
+    }
   }
 
   .galleryHeader {

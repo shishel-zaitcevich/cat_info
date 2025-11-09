@@ -38,16 +38,17 @@ export function CatsSection() {
 
   return (
     <div className="cats" data-scroll data-scroll-section>
+      <img className="logo" src="/catslogo.png" alt="logo" />
       <img
         ref={bgImageRef}
         className="bgImage"
         src="/michiel-six-QFmOSzFprXk-unsplash.jpg"
-        alt=""
+        alt="cat"
         data-scroll
         data-scroll-speed="-3"
       />
       <h1 className="header" data-scroll data-scroll-speed="-4">
-        CAT'S
+        CAT
       </h1>
     </div>
   );

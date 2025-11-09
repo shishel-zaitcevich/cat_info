@@ -31,7 +31,7 @@ export function GallerySection() {
 
     gsap.to('.gallery__section', {
       backgroundSize: isTablet ? '170%' : '100%',
-      backgroundPosition: isTablet ? 'center center' : '50% 100%',
+      backgroundPosition: isTablet ? 'center center' : '50% 70%',
       scrollTrigger: {
         trigger: '.gallery__section',
         start: 'top 90%',
@@ -99,7 +99,8 @@ export function GallerySection() {
     >
       <img
         className="one"
-        src="/deniz-uzuner-0ZffcNJ7jP0-unsplash.jpg"
+        // src="/adorable-cat-lifestyle.jpg"
+        src="/redcat1.jpg"
         alt=""
         loading="lazy"
         onLoad={handleImageLoad}
@@ -107,13 +108,14 @@ export function GallerySection() {
       <img
         className="two"
         src="/sara-groblechner-m5u3tXsY76w-unsplash.jpg"
+        // src="/bg.jpg"
         alt=""
         loading="lazy"
         onLoad={handleImageLoad}
       />
       <img
         className="three"
-        src="/oguzhan-tasimaz-r2Uk2g31JiE-unsplash.jpg"
+        src="/three.jpg"
         alt=""
         loading="lazy"
         onLoad={handleImageLoad}

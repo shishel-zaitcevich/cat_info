@@ -44,7 +44,7 @@ const AuthButton: React.FC<AuthButtonProps> = ({ className }) => {
 
   return (
     <div className={classNames(s.signUpBtn, className)} onClick={handleClick}>
-      <button className={s.authBtn}>{subId ? 'Sign out' : 'Sign up'}</button>
+      <button className={s.authBtn}>{subId ? 'LOG OUT' : 'SIGN UP'}</button>
     </div>
   );
 };
