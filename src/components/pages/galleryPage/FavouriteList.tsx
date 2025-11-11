@@ -1,16 +1,17 @@
-import { useState } from 'react';
 import {
   useFetchFavoritesQuery,
   useRemoveFromFavoritesMutation,
 } from '../../../api/catApi';
 
+import { useAppSelector } from '../../../hooks/useAppSelector';
+
 const FavoritesList: React.FC = () => {
-  const subId = 'user-123';
-  const [page, setPage] = useState(1);
+  const subId = useAppSelector((state) => state.auth.subId);
+
   const { data: favorites = [], isLoading } = useFetchFavoritesQuery({
-    subId,
-    page,
+    subId: subId ?? '',
   });
+  console.log(subId);
   const [removeFromFavorites] = useRemoveFromFavoritesMutation();
 
   if (isLoading) return <p>Загрузка избранных котов...</p>;
@@ -31,18 +32,6 @@ const FavoritesList: React.FC = () => {
             </button>
           </div>
         ))}
-      </div>
-
-      {/* Пагинация */}
-      <div className="pagination">
-        <button
-          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-          disabled={page === 1}
-        >
-          ← Назад
-        </button>
-        <span>Страница {page}</span>
-        <button onClick={() => setPage((prev) => prev + 1)}>Вперед →</button>
       </div>
     </div>
   );

@@ -3,8 +3,9 @@ import { useCallback, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-import '../../../assets/styles/homePage/GallerySection.scss';
 import { useWindowSize } from 'usehooks-ts';
+
+import '../../../assets/styles/homePage/GallerySection.scss';
 
 export function GallerySection() {
   const [imagesLoaded, setImagesLoaded] = useState(0);
@@ -17,8 +18,6 @@ export function GallerySection() {
 
   const totalImages = 3;
   const allImagesLoaded = imagesLoaded === totalImages;
-
-  // console.log(isMobile);
 
   const handleImageLoad = useCallback(() => {
     setImagesLoaded((prev) => prev + 1);

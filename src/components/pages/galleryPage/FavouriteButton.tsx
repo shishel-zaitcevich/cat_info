@@ -5,8 +5,9 @@ import {
   useRemoveFromFavoritesMutation,
 } from '../../../api/catApi';
 
-import '../../../assets/styles/FavouriteButton.scss';
 import { useMustachesShakeAnimation } from '../../../hooks/useMustachesShake';
+
+import '../../../assets/styles/FavouriteButton.scss';
 
 interface FavouriteButtonProps {
   className?: string;

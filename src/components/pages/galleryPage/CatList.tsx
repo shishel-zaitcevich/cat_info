@@ -1,20 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useFetchCatImagesQuery } from '../../../api/catApi';
+import { RootState } from '../../../api/store/store';
+
 import { useSectionScrollAnimation } from '../../../hooks/useSectionScrollAnimation';
 
 import Cat from '../../shared/preloader/Cat';
 import CatCard from './CatCard/CatCard';
-
-import '../../../assets/styles/CatList.scss';
-import ButtonHome from '../../shared/ButtonHome/ButtonHome';
-import { RootState } from '../../../api/store/store';
-import { useSelector } from 'react-redux';
-
+import ButtonHome from '../../shared/Buttons/ButtonHome/ButtonHome';
 import WaveBackground from '../../shared/Backgrounds/WaveBackground';
 import NebulaPurpleBackground from '../../shared/Backgrounds/NebulaPurpleBackground';
 
 import s from './CatList.module.scss';
+import '../../../assets/styles/CatList.scss';
 
 export interface Cat {
   id: string;

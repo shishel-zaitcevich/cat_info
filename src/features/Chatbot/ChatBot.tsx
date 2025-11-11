@@ -17,10 +17,6 @@ interface Message {
   text: string;
 }
 
-// interface GeminiServerResponse {
-//   text: string;
-// }
-
 interface ChatbotProps {
   className?: string;
 }
@@ -48,12 +44,6 @@ const ChatBot: React.FC<ChatbotProps> = ({ className }) => {
     setLoading(true);
 
     try {
-      // const response = await axios.post<GeminiServerResponse>(
-      //   `${API_URL}/api/gemini`,
-      //   { prompt: userMessage },
-      //   { headers: { 'Content-Type': 'application/json' } }
-      // );
-
       const response = await axios.post<{ text: string }>(
         `${API_URL}/gemini`,
         { prompt: userMessage },

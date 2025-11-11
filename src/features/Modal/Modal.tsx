@@ -1,12 +1,16 @@
 import React from 'react';
-import s from './Modal.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { RootState } from '../../api/store/store';
 import { closeModal } from '../../api/store/modalSlice';
+
 import CatDetails, {
   CatDetailsProps,
 } from '../../components/pages/galleryPage/CatDetails/CatDetails';
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from '../Forms/RegisterForm';
+import LoginForm from '../Forms/LoginForm';
+
+import s from './Modal.module.scss';
 
 const Modal: React.FC = () => {
   const { isOpen, modalData } = useSelector((state: RootState) => state.modal);
@@ -22,6 +26,9 @@ const Modal: React.FC = () => {
       case 'Register':
         return <RegisterForm />;
 
+      case 'Login':
+        return <LoginForm />;
+
       default:
         return <div>Неизвестный тип модального контента</div>;
     }
@@ -31,9 +38,7 @@ const Modal: React.FC = () => {
     <div
       className={s.modalOverlay}
       onClick={() => dispatch(closeModal())}
-      onWheel={(event) => {
-        event.stopPropagation();
-      }}
+      onWheel={(event) => event.stopPropagation()}
     >
       <div className={s.modalContent} onClick={(e) => e.stopPropagation()}>
         <button

@@ -1,12 +1,12 @@
-import '../../../assets/styles/homePage/ButtonSection.scss';
-
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import {
   animateImagesEnter,
   animateImagesLeave,
 } from '../../../utils/homeButtonAnimation';
-import { Link } from 'react-router-dom';
+
+import '../../../assets/styles/homePage/ButtonSection.scss';
 
 export function ButtonSection() {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -15,7 +15,6 @@ export function ButtonSection() {
   const handleMouseEnter = () => {
     if (buttonRef.current) {
       const buttonRect = buttonRef.current.getBoundingClientRect();
-      // console.log(buttonRect);
       animateImagesEnter(buttonRect, imagesRef);
     }
   };

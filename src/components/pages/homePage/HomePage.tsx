@@ -1,4 +1,5 @@
 import { useState, useEffect, RefObject } from 'react';
+
 import Cat from '../../shared/preloader/Cat';
 import { ButtonSection } from './ButtonSection';
 import { CatsSection } from './CatsSection';
@@ -12,9 +13,11 @@ import 'lenis/dist/lenis.css';
 import React from 'react';
 
 import Modal from '../../../features/Modal/Modal';
-import AuthButton from '../../shared/AuthButton/AuthButton';
-import s from './HomePage.module.scss';
+import AuthButton from '../../shared/Buttons/AuthButton/AuthButton';
+
 import classNames from 'classnames';
+
+import s from './HomePage.module.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 

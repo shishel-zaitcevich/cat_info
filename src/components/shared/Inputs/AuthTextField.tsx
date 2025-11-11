@@ -1,10 +1,9 @@
-// src/components/inputs/AuthTextField.tsx
 import React from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 interface AuthTextFieldProps extends Omit<TextFieldProps, 'variant'> {
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
   error?: boolean;
   helperText?: string;
   disabled?: boolean;
@@ -21,7 +20,7 @@ const AuthTextField: React.FC<AuthTextFieldProps> = ({
 }) => {
   return (
     <TextField
-      {...register}
+      {...(register ? register : {})}
       fullWidth
       variant="outlined"
       error={error}
@@ -46,24 +45,18 @@ const AuthTextField: React.FC<AuthTextFieldProps> = ({
           },
         },
 
-        // Текст ввода
         '& .MuiInputBase-input': {
           color: 'white',
-
-          // Плейсхолдер: светло-серый (неактивно)
           '&::placeholder': {
             color: 'rgba(255, 255, 255, 0.5)',
             opacity: 1,
             transition: 'color 0.2s ease',
           },
-
-          // Плейсхолдер: белый (в фокусе)
           '&.Mui-focused::placeholder': {
             color: 'rgba(255, 255, 255, 0.9)',
           },
         },
 
-        // Ярлык (label)
         '& .MuiInputLabel-root': {
           color: 'rgba(255, 255, 255, 0.6)',
           '&.Mui-focused': {

@@ -1,16 +1,17 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 
 import classNames from 'classnames';
 
-import { useDispatch } from 'react-redux';
 import { openModal } from '../../../../api/store/modalSlice';
 
 import { Cat } from '../CatList';
 import FavouriteButton from '../FavouriteButton';
+
 import useCatCardAnimation from '../../../../hooks/useCatCardAnimation';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 import s from './CatCard.module.scss';
-import { useAppSelector } from '../../../../hooks/useAppSelector';
 
 interface CatCardProps {
   cat: Cat;

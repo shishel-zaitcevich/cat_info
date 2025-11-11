@@ -1,9 +1,10 @@
 import { useGSAP } from '@gsap/react';
+import { useEffect, useRef, useState } from 'react';
+
+import gsap from 'gsap';
+import { useWindowSize } from 'usehooks-ts';
 
 import '../../../assets/styles/homePage/CatsSection.scss';
-import gsap from 'gsap';
-import { useEffect, useRef, useState } from 'react';
-import { useWindowSize } from 'usehooks-ts';
 
 export function CatsSection() {
   const [isBgLoaded, setIsBgLoaded] = useState(false);

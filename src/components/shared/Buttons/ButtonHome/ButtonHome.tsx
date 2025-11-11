@@ -1,10 +1,12 @@
 import { MutableRefObject } from 'react';
 import { Link } from 'react-router-dom';
-import { usePendulumAnimation } from '../../../hooks/usePendulumanimation';
 
-import s from './ButtonHome.module.scss';
 import { useWindowSize } from 'usehooks-ts';
 import classNames from 'classnames';
+
+import { usePendulumAnimation } from '../../../../hooks/usePendulumanimation';
+
+import s from './ButtonHome.module.scss';
 
 interface ButtonHomeProps {
   redRoundRef: MutableRefObject<HTMLImageElement | null>;

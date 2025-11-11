@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CatDetailsProps } from '../../components/pages/galleryPage/CatDetails/CatDetails';
 
+type ModalProps = CatDetailsProps | Record<string, never>;
+
 interface ModalState {
   isOpen: boolean;
-  modalData: { type: string; props?: CatDetailsProps } | null;
+  modalData: { type: string; props?: ModalProps } | null;
 }
 
 const initialState: ModalState = {
@@ -15,7 +17,10 @@ const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openModal: (state, action: PayloadAction<{ type: string; props?: CatDetailsProps }>) => {
+    openModal: (
+      state,
+      action: PayloadAction<{ type: string; props?: ModalProps }>
+    ) => {
       state.isOpen = true;
       state.modalData = action.payload;
     },
@@ -23,9 +28,12 @@ const modalSlice = createSlice({
       state.isOpen = false;
       state.modalData = null;
     },
-    toggleModal: (state, action: PayloadAction<{ type: string; props?: CatDetailsProps }>) => {
+    toggleModal: (
+      state,
+      action: PayloadAction<{ type: string; props?: ModalProps }>
+    ) => {
       state.isOpen = !state.isOpen;
-      state.modalData = state.isOpen ? null : action.payload;
+      state.modalData = state.isOpen ? action.payload : null;
     },
   },
 });
