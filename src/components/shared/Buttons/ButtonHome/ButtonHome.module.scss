@@ -11,6 +11,9 @@
     max-width: 120px;
     position: relative;
     z-index: 1;
+    @media (max-width: 1200px) {
+      max-width: 60px;
+    }
 
     @media (max-width: 768px) {
       max-width: 40px;
@@ -37,6 +40,11 @@
     color: #fff;
     text-align: center;
     margin: 0;
+
+    @media (max-width: 1200px) {
+      font-size: 14px;
+      padding-top: 10px;
+    }
 
     @media (max-width: 768px) {
       padding-top: 0;

@@ -15,19 +15,21 @@ interface ButtonHomeProps {
 const ButtonHome: React.FC<ButtonHomeProps> = ({ redRoundRef }) => {
   const { width } = useWindowSize();
 
-  const MOBILE_BREAKPOINT = 768;
-  const isMobile = width < MOBILE_BREAKPOINT;
+  const TABLET_BREAKPOINT = 1200;
+  // const MOBILE_BREAKPOINT = 768;
+  // const isMobile = width < MOBILE_BREAKPOINT;
+  const isTablet = width < TABLET_BREAKPOINT;
 
   usePendulumAnimation(redRoundRef, '.button-home');
 
   return (
     <Link to={'/'} className={classNames(s.button__home, 'button-home')}>
-      {isMobile ? (
+      {isTablet ? (
         <img src="/pets-home.webp" alt="home" className={s.home} />
       ) : (
         <img src="/home.png" alt="home" className={s.home} />
       )}
-      {isMobile ? null : (
+      {isTablet ? null : (
         <img
           src="/redRound.png"
           alt="home"

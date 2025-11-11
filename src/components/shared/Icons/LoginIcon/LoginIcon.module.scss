@@ -1,0 +1,19 @@
+.galleryimg {
+  max-width: 130px;
+  width: 100%;
+  filter: none;
+  transition: filter 0.3s ease;
+
+  @media screen and (max-width: 1200px) {
+    max-width: 100px;
+  }
+
+  @media screen and (max-width: 900px) {
+    max-width: 100px;
+  }
+}
+
+.homeImg {
+  max-width: 160px;
+  width: 160px;
+}

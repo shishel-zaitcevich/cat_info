@@ -23,8 +23,6 @@ const CatCard = ({ cat, index, className }: CatCardProps) => {
   const dispatch = useDispatch();
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
-  // const subId = 'user-99568';
-
   const subId = useAppSelector((state) => state.auth.subId);
 
   const refs = {

@@ -10,6 +10,7 @@ import {
 import { clearSubId } from '../../../../api/store/authSlice';
 
 import s from './AuthButton.module.scss';
+import LoginIcon from '../../Icons/LoginIcon/LoginIcon';
 
 interface AuthButtonProps {
   className?: string;
@@ -36,7 +37,8 @@ const AuthButton: React.FC<AuthButtonProps> = ({
   return (
     <div className={classNames(s.signUpBtn, className)} onClick={handleClick}>
       <button className={classNames(s.authBtn, textClassName)}>
-        {subId ? 'LOG OUT' : 'LOG IN'}
+        {/* {subId ? 'LOG OUT' : 'LOG IN'} */}
+        <LoginIcon subId={subId} />
       </button>
     </div>
   );
