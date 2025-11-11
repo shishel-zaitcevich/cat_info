@@ -1,139 +1,287 @@
+// .gallery__section {
+//   height: 99vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   overflow: hidden;
+
+//   background-image: url('../../../../public/deniz-uzuner-0ZffcNJ7jP0-unsplash.jpg');
+//   background-repeat: no-repeat;
+//   background-size: 270%;
+//   background-position: 50% 70%;
+//   border: white 20px solid;
+//   margin: 0 auto;
+//   position: relative;
+
+//   @media (max-width: 900px) {
+//     background-image: url('../../../../public/bg.jpg');
+//   }
+
+//   @media (max-width: 768px) {
+//     border: white 10px solid;
+//   }
+
+//   img {
+//     position: absolute;
+//     border-radius: 1rem;
+//     will-change: transform, opacity;
+//   }
+
+//   .one {
+//     border-radius: 1rem;
+//     bottom: -6vh;
+//     right: 8rem;
+//     width: 49vw;
+
+//     @media (max-width: 2600px) and (max-height: 1700px) {
+//       bottom: -10vh;
+//     }
+
+//     @media (max-width: 1800px) and (max-height: 1000px) {
+//       bottom: -9dvh;
+//       right: 3rem;
+//     }
+
+//     @media (max-width: 900px) {
+//       left: 0vw;
+//       bottom: -2dvh;
+//     }
+
+//     @media (max-width: 1800px) and (max-height: 600px) {
+//       bottom: -18dvh;
+//       right: 3rem;
+//     }
+
+//     @media (max-width: 520px) {
+//       width: 79vw;
+//       z-index: 5;
+//     }
+
+//     @media (max-width: 400px) {
+//       bottom: 29dvh;
+//       left: 26vw;
+//       opacity: 0.8;
+//     }
+//   }
+
+//   .two {
+//     left: -1vw;
+//     width: 40vw;
+
+//     @media (max-width: 900px) {
+//       top: -4vh;
+//     }
+
+//     @media (max-width: 600px) {
+//       width: 50vw;
+//     }
+
+//     @media (max-width: 400px) {
+//       opacity: 0.6;
+//     }
+//   }
+
+//   .three {
+//     right: 0vw;
+//     width: 42vw;
+//     top: 0rem;
+
+//     @media (max-width: 1800px) and (max-height: 1000px) {
+//       right: 0vw;
+//       top: -3rem;
+//     }
+
+//     @media (max-width: 900px) {
+//       top: 26rem;
+//       width: 70vw;
+//       right: -11vw;
+//     }
+
+//     @media (max-width: 520px) {
+//       top: 29rem;
+//       width: 85vw;
+//     }
+
+//     @media (max-width: 400px) {
+//       top: 33rem;
+//       width: 79vw;
+//       right: 4rem;
+//       opacity: 0.9;
+//     }
+//   }
+
+//   .galleryHeader {
+//     color: white;
+//     font-size: 20vw;
+//     text-align: center;
+//     opacity: 0.1;
+//     position: relative;
+//     z-index: 5;
+//   }
+// }
+
 .gallery__section {
   height: 99vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  // background-image: url('https://nek.netlify.app/assets/images/night_rocks_ocean.jpg');
+  position: relative;
+  margin: 0 auto;
+  border: 20px solid white;
 
   background-image: url('../../../../public/deniz-uzuner-0ZffcNJ7jP0-unsplash.jpg');
   background-repeat: no-repeat;
   background-size: 270%;
-  // background-position: 50% 100%;
   background-position: 50% 70%;
-  border: white 20px solid;
-  margin: 0 auto;
-  position: relative;
 
+  // 900px
   @media (max-width: 900px) {
     background-image: url('../../../../public/bg.jpg');
   }
 
+  // 768px
+  @media (max-width: 768px) {
+    border-width: 10px;
+  }
+
+  // Общие стили для всех изображений
   img {
     position: absolute;
     border-radius: 1rem;
     will-change: transform, opacity;
   }
 
+  // Изображение 1 (правый нижний угол)
   .one {
-    border-radius: 1rem;
-    bottom: -6vh;
-    right: 8rem;
-    width: 49vw;
+    bottom: -80px;
+    right: 128px;
+    width: 70vw;
+    max-width: 1120px;
+    min-width: 400px;
 
-    @media (max-width: 2600px) and (max-height: 1700px) {
-      bottom: -10vh;
+    // 1800px
+    @media (max-width: 1800px) {
+      bottom: -100px;
+      right: 48px;
     }
 
-    @media (max-width: 1800px) and (max-height: 1000px) {
-      bottom: -9dvh;
-      right: 3rem;
-    }
-
+    // 900px
     @media (max-width: 900px) {
-      left: 0vw;
-      bottom: -2dvh;
+      left: 0;
+      bottom: -30px;
+      width: 60vw;
+      min-width: 300px;
     }
 
-    @media (max-width: 1800px) and (max-height: 600px) {
-      bottom: -18dvh;
-      right: 3rem;
+    @media (max-width: 768px) {
+      bottom: -45px;
+      left: -115px;
+      width: 116vw;
+      z-index: 5;
     }
 
+    // 520px
+    @media (max-width: 520px) {
+      width: 79vw;
+      left: 0;
+      bottom: 0;
+    }
+
+    // 400px
     @media (max-width: 400px) {
-      bottom: 29dvh;
+      bottom: 230px;
       left: 26vw;
       opacity: 0.8;
     }
   }
 
+  // Изображение 2 (левый верхний угол)
   .two {
     left: -1vw;
+    top: 0;
     width: 40vw;
+    max-width: 840px;
+    min-width: 350px;
 
+    // 900px
     @media (max-width: 900px) {
-      top: -4vh;
+      top: -40px;
     }
 
-    @media (max-width: 400px) {
-      opacity: 0.6;
-    }
-  }
-
-  .three {
-    right: 0vw;
-    width: 42vw;
-    top: 0rem;
-
-    @media (max-width: 1800px) and (max-height: 1000px) {
-      right: 0vw;
-      top: -3rem;
-    }
-
-    @media (max-width: 900px) {
-      top: 26rem;
-      width: 70vw;
-      right: -11vw;
+    // 600px
+    @media (max-width: 600px) {
+      width: 50vw;
+      min-width: 280px;
     }
 
     @media (max-width: 520px) {
-      top: 22rem;
-      width: 63vw;
+      width: 45vw;
+      min-width: 205px;
+    }
+    // 400px
+    @media (max-width: 400px) {
+      opacity: 0.6;
+      min-width: 175px;
+    }
+  }
+
+  // Изображение 3 (правый верхний угол)
+  .three {
+    right: 0;
+    top: -55px;
+    width: 42vw;
+    max-width: 861px;
+    min-width: 380px;
+
+    // 1800px
+    @media (max-width: 1800px) {
+      top: -48px;
+    }
+
+    // 900px
+    @media (max-width: 900px) {
+      top: 416px;
+      right: -11vw;
+      width: 70vw;
+      min-width: 300px;
+    }
+
+    @media (max-width: 768px) {
+      width: 100vw;
+    }
+    // 520px
+    @media (max-width: 520px) {
+      top: 464px;
+      width: 85vw;
+    }
+
+    // 400px
+    @media (max-width: 400px) {
+      top: 567px;
+      right: 64px;
+      width: 79vw;
+      opacity: 0.9;
+    }
+  }
+
+  // Заголовок
+  .galleryHeader {
+    position: relative;
+    z-index: 5;
+    font-size: clamp(80px, 20vw, 400px);
+    color: white;
+    text-align: center;
+    opacity: 0.1;
+
+    @media (max-width: 520px) {
+      margin-bottom: 130px;
+      font-size: 78px;
     }
 
     @media (max-width: 400px) {
-      top: 33rem;
-      width: 79vw;
-      right: 3rem;
-      opacity: 0.9;
-    }
-  }
-
-  .galleryHeader {
-    color: white;
-    font-size: 20vw;
-    text-align: center;
-    opacity: 0.1;
-    position: relative;
-    z-index: 5;
-  }
-
-  @media screen and (max-width: 768px) {
-    border: white 10px solid;
-
-    .two {
-      left: -6vw;
-      width: 60vw;
-    }
-
-    .one {
-      width: 70vw;
-      right: -1rem;
-      z-index: 3;
-    }
-
-    .galleryHeader {
-      font-size: 19vw;
-    }
-  }
-
-  @media screen and (max-width: 520px) {
-    background-size: 200% !important;
-    background-position: 70% !important;
-
-    .galleryHeader {
-      font-size: 18vw;
-      opacity: 0.9;
+      margin-bottom: 130px;
+      font-size: 68px;
     }
   }
 }

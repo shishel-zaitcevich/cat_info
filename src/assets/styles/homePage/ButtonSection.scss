@@ -48,6 +48,12 @@
     }
   }
 
+  @media screen and (max-width: 600px) {
+    background-size: 400%;
+    background-position-x: 20%;
+    background-position-y: 71%;
+  }
+
   @media screen and (max-width: 480px) {
     background-size: 430%;
     background-position-x: 20%;

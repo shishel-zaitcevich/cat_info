@@ -47,8 +47,14 @@ export function ButtonSection() {
               fontSize: isMobile ? '2rem' : '1.5rem',
               // backgroundColor: '#aab1b7',
               background: 'linear-gradient(45deg, #2629d4ff, #964ee9)',
-              marginLeft: isMobile ? '0' : isTablet ? '150%' : '90%',
-              marginTop: isMobile ? '520px' : isTablet ? '650px' : '0',
+              marginLeft: isMobile
+                ? '0'
+                : isTablet
+                  ? '70%'
+                  : isMobile
+                    ? '85%'
+                    : '90%',
+              marginTop: isMobile ? '320px' : isTablet ? '450px' : '0',
               borderRadius: '10px',
               fontWeight: '600',
             }}
