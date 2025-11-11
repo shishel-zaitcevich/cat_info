@@ -102,9 +102,8 @@ const HomePage: React.FC = () => {
           style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           className={classNames(s.home__page, 'home-page')}
         >
-          <div className={s.authWrapper}>
-            <AuthButton />
-          </div>
+          <img className={s.logo} src="/catslogo.png" alt="logo" />
+          <AuthButton />
           <CatsSection />
           <div
             style={{
@@ -128,10 +127,8 @@ const HomePage: React.FC = () => {
           style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           className={s.home__page}
         >
-          {/* <AuthButton className={s.authBtn} /> */}
-          <div className={s.authWrapper}>
-            <AuthButton />
-          </div>
+          <img className={s.logo} src="/catslogo.png" alt="logo" />
+          <AuthButton />
           <CatsSection />
           <div
             style={{

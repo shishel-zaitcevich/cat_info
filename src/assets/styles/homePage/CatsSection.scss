@@ -12,23 +12,6 @@
     align-items: flex-start;
   }
 
-  .logo {
-    position: absolute;
-    top: 10px;
-    left: 20px;
-    max-width: 160px;
-    filter: grayscale(100%) brightness(1.6); // светло-серый
-    transition: filter 0.3s ease;
-
-    @media screen and (max-width: 900px) {
-      max-width: 100px;
-    }
-
-    @media screen and (max-width: 520px) {
-      margin-left: -20px;
-    }
-  }
-
   .bgImage {
     position: absolute;
     z-index: -1;
@@ -41,7 +24,9 @@
     @media screen and (max-width: 768px) {
       width: 100vw;
       height: 100vh;
+      border-radius: 0;
     }
+
     @media screen and (max-width: 520px) {
       width: 220%;
       max-width: none;
@@ -65,7 +50,6 @@
     }
     @media screen and (max-width: 480px) {
       font-size: 30vw;
-      // margin-top: 200px;
     }
 
     .text {

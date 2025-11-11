@@ -11,9 +11,30 @@
   @media screen and (max-width: 900px) {
     max-width: 100px;
   }
+
+  @media screen and (max-width: 768px) {
+    max-width: 70px;
+  }
 }
 
-.homeImg {
-  max-width: 160px;
-  width: 160px;
+.homeimg {
+  max-width: 130px;
+  width: 100%;
+  margin: 20px;
+  @media screen and (max-width: 1080px) {
+    max-width: 100px;
+  }
+
+  @media screen and (max-width: 900px) {
+    max-width: 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 70px;
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: 520px) {
+    margin-top: 15px;
+  }
 }

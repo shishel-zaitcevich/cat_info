@@ -38,35 +38,36 @@ img {
   justify-content: space-between;
   align-items: flex-start;
 
-  .auth-wrapper {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    z-index: 10;
-    max-width: 130px;
-    max-height: 130px;
-    width: 100%;
-    height: 100%;
+  // .auth-wrapper {
+  //   position: absolute;
+  //   //   top: 0;
+  //   //   right: 20px;
+  //   //   z-index: 10;
+  //   //   max-width: 130px;
+  //   //   max-height: 130px;
+  //   width: 100%;
+  //   height: 100%;
+  // }
 
-    @media screen and (max-width: 1080px) {
-      max-width: 100px;
-      top: 0;
-      right: 0;
-    }
+  //   @media screen and (max-width: 1080px) {
+  //     max-width: 100px;
+  //     top: 0;
+  //     right: 0;
+  //   }
 
-    @media screen and (max-width: 900px) {
-      top: -10px;
-    }
+  //   @media screen and (max-width: 900px) {
+  //     top: -10px;
+  //   }
 
-    @media screen and (max-width: 768px) {
-      max-width: 70px;
-      top: -5px;
-    }
+  //   @media screen and (max-width: 768px) {
+  //     max-width: 70px;
+  //     top: -5px;
+  //   }
 
-    @media screen and (max-width: 520px) {
-      top: -15px;
-    }
-  }
+  //   @media screen and (max-width: 520px) {
+  //     top: -15px;
+  //   }
+  // }
 
   .chatBot {
     z-index: 10;

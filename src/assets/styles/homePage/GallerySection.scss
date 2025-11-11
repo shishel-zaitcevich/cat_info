@@ -34,18 +34,26 @@
     @media (max-width: 2600px) and (max-height: 1700px) {
       bottom: -10vh;
     }
+
     @media (max-width: 1800px) and (max-height: 1000px) {
       bottom: -9dvh;
-      right: 3rem;
-    }
-    @media (max-width: 1800px) and (max-height: 600px) {
-      bottom: -18dvh;
       right: 3rem;
     }
 
     @media (max-width: 900px) {
       left: 0vw;
       bottom: -2dvh;
+    }
+
+    @media (max-width: 1800px) and (max-height: 600px) {
+      bottom: -18dvh;
+      right: 3rem;
+    }
+
+    @media (max-width: 400px) {
+      bottom: 29dvh;
+      left: 26vw;
+      opacity: 0.8;
     }
   }
 
@@ -55,6 +63,10 @@
 
     @media (max-width: 900px) {
       top: -4vh;
+    }
+
+    @media (max-width: 400px) {
+      opacity: 0.6;
     }
   }
 
@@ -77,6 +89,13 @@
     @media (max-width: 520px) {
       top: 22rem;
       width: 63vw;
+    }
+
+    @media (max-width: 400px) {
+      top: 33rem;
+      width: 79vw;
+      right: 3rem;
+      opacity: 0.9;
     }
   }
 

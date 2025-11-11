@@ -1,15 +1,26 @@
 .home__page {
   position: relative;
-  .authWrapper {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 10;
-    max-width: 160px;
-    max-height: 180px;
-    width: 100%;
-    height: 100%;
-    // width: 95px;
-    // height: 70px;
+}
+
+.logo {
+  position: absolute;
+  z-index: 30;
+  filter: grayscale(100%) brightness(1.6);
+  transition: filter 0.3s ease;
+
+  max-width: 130px;
+  width: 100%;
+  margin: 10px;
+  @media screen and (max-width: 1080px) {
+    max-width: 100px;
+  }
+
+  @media screen and (max-width: 900px) {
+    max-width: 100px;
+  }
+
+  @media screen and (max-width: 768px) {
+    max-width: 70px;
+    margin-left: 5px;
   }
 }

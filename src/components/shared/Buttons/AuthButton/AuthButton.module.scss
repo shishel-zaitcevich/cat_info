@@ -1,45 +1,14 @@
 .signUpBtn {
-  max-width: 160px;
-  max-height: 180px;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  margin-left: auto;
+  position: absolute;
+  right: 10px;
   z-index: 2;
   cursor: url('/touchCursor2.png'), pointer;
-  filter: grayscale(100%) brightness(1.6); // светло-серый
+  filter: grayscale(100%) brightness(1.6);
   transition: filter 0.3s ease;
 
-  @media screen and (max-width: 900px) {
-    max-width: 100px;
-  }
-
-  @media screen and (max-width: 520px) {
-    max-width: 95px;
-    max-height: 95px;
-    margin-right: -10px;
-  }
-
   .authBtn {
-    color: #fff;
     background-color: transparent;
-    position: absolute;
-    // top: 12px;
-    // right: 3px;
     border: none;
     cursor: url(/touchCursor2.png), pointer;
-    font-size: 11px;
-
-    @media screen and (max-width: 900px) {
-      max-width: 100px;
-      top: 14px;
-      right: 6px;
-      font-size: 7px;
-    }
-
-    @media screen and (max-width: 520px) {
-      top: 21px;
-      right: 2px;
-    }
   }
 }

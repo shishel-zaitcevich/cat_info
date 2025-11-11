@@ -14,6 +14,7 @@ import NebulaPurpleBackground from '../../shared/Backgrounds/NebulaPurpleBackgro
 
 import s from './CatList.module.scss';
 import '../../../assets/styles/CatList.scss';
+import AuthButton from '../../shared/Buttons/AuthButton/AuthButton';
 
 export interface Cat {
   id: string;
@@ -60,7 +61,10 @@ const CatList: React.FC = () => {
 
   return (
     <section className={`cat-list ${isVisible ? 'visible' : 'hidden'}`}>
-      <ButtonHome redRoundRef={redRoundRef} />
+      <div className={s.auth__wrapper}>
+        <ButtonHome redRoundRef={redRoundRef} />
+        <AuthButton className="authBtnImg" textClassName="textPosition" />
+      </div>
 
       {cats.map((cat, index) => {
         const BackgroundComponent =
