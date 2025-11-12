@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import s from './NavBar.module.scss';
 import classNames from 'classnames';
 import AuthButton from '../../components/shared/Buttons/AuthButton/AuthButton';
 import BurgerMenu from './BurgerMenu';
+import { useWindowSize } from 'usehooks-ts';
+
+const TABLET_BREAKPOINT = 900;
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,19 +16,24 @@ const NavBar: React.FC = () => {
   const handleToggle = () => setIsOpen((prev) => !prev);
   const handleClose = () => setIsOpen(false);
 
+  const { width } = useWindowSize();
+
+  const isTablet = useMemo(() => width < TABLET_BREAKPOINT, [width]);
+
   const links = [
     { path: '/', label: 'Home' },
     { path: '/gallery', label: 'Gallery' },
     { path: '/images', label: 'Images' },
     { path: '/play', label: 'Play' },
-    { path: '/catbot', label: 'CatBot' },
+    // { path: '/catbot', label: 'CatBot' },
+    isTablet ? { path: '/catbot', label: 'CatBot' } : { path: '', label: '' },
   ];
 
   return (
     <header className={s.header}>
       <div className={s.container}>
         <img className={s.logo} src="/catslogo.png" alt="logo" />
-
+        <AuthButton className={s.homeAuth} />
         <nav className={s.navLinks}>
           {links.map(({ path, label }) => (
             <NavLink
@@ -41,7 +49,6 @@ const NavBar: React.FC = () => {
         </nav>
 
         <div className={s.actions}>
-          <AuthButton />
           <button
             className={classNames(s.burgerBtn, { [s.open]: isOpen })}
             onClick={handleToggle}

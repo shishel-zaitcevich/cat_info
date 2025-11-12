@@ -83,7 +83,7 @@ export const createAnimationConfig = (
       },
   header: isMobile
     ? {
-        initialY: 700,
+        initialY: 1200,
         initialOpacity: 0,
         targetY: 0,
         targetOpacity: 1,

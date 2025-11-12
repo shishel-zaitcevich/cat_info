@@ -54,10 +54,10 @@ export function GallerySection() {
       className="gallery__section"
       id="gallerySection"
       data-scroll-section
-      style={{
-        opacity: allImagesLoaded ? 1 : 0,
-        transition: 'opacity 0.5s ease',
-      }}
+      // style={{
+      //   // opacity: allImagesLoaded ? 1 : 0,
+      //   transition: 'opacity 0.5s ease',
+      // }}
     >
       {IMAGES.map((image) => (
         <img

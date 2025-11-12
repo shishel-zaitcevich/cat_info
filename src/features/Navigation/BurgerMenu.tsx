@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import AuthButton from '../../components/shared/Buttons/AuthButton/AuthButton';
 
 import s from './NavBar.module.scss';
+import WaveBackground from '../../components/shared/Backgrounds/WaveBackground';
 
 interface BurgerMenuProps {
   isOpen: boolean;
@@ -22,26 +23,30 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
 }) => {
   return (
     <div className={classNames(s.burgerMenu, { [s.open]: isOpen })}>
-      <nav className={s.burgerNav}>
-        {links.map(({ path, label }) => (
-          <NavLink
-            key={path}
-            to={path}
-            onClick={onClose}
-            className={({ isActive }) =>
-              classNames(s.burgerLink, {
-                [s.active]: isActive || currentPath === path,
-              })
-            }
-          >
-            {label}
-          </NavLink>
-        ))}
-      </nav>
-
-      <div className={s.burgerActions}>
-        <AuthButton className={s.authBtn} />
-      </div>
+      <WaveBackground
+        children={
+          <>
+            <div className={s.burgerActions}></div>
+            <nav className={s.burgerNav}>
+              <AuthButton className={s.authBtn} />
+              {links.map(({ path, label }) => (
+                <NavLink
+                  key={path}
+                  to={path}
+                  onClick={onClose}
+                  className={({ isActive }) =>
+                    classNames(s.burgerLink, {
+                      [s.active]: isActive || currentPath === path,
+                    })
+                  }
+                >
+                  {label}
+                </NavLink>
+              ))}
+            </nav>
+          </>
+        }
+      />
     </div>
   );
 };

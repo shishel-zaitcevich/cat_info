@@ -8,9 +8,9 @@ import {
   useAppSelector,
 } from '../../../../hooks/useAppSelector';
 import { clearSubId } from '../../../../api/store/authSlice';
+import LoginIcon from '../../Icons/LoginIcon/LoginIcon';
 
 import s from './AuthButton.module.scss';
-import LoginIcon from '../../Icons/LoginIcon/LoginIcon';
 
 interface AuthButtonProps {
   className?: string;
@@ -26,10 +26,8 @@ const AuthButton: React.FC<AuthButtonProps> = ({
 
   const handleClick = () => {
     if (subId) {
-      // Выход - clearSubId автоматически очистит localStorage
       dispatch(clearSubId());
     } else {
-      // Вход
       dispatch(openModal({ type: 'Login' }));
     }
   };
@@ -37,7 +35,6 @@ const AuthButton: React.FC<AuthButtonProps> = ({
   return (
     <div className={classNames(s.signUpBtn, className)} onClick={handleClick}>
       <button className={classNames(s.authBtn, textClassName)}>
-        {/* {subId ? 'LOG OUT' : 'LOG IN'} */}
         <LoginIcon subId={subId} />
       </button>
     </div>
