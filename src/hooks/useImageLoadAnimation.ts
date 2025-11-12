@@ -13,10 +13,6 @@ interface UseImageLoadAnimationParams {
   slideUpDelay?: number;
 }
 
-/**
- * Хук для управления анимацией при загрузке изображения
- * Сначала fade-in изображения, затем slide-up заголовка
- */
 export const useImageLoadAnimation = ({
   imageSrc,
   imageSelector,
@@ -26,18 +22,16 @@ export const useImageLoadAnimation = ({
 }: UseImageLoadAnimationParams) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  // Предзагрузка изображения
   useEffect(() => {
     const img = new Image();
     img.src = imageSrc;
     img.onload = () => setIsImageLoaded(true);
     img.onerror = () => {
       console.error(`Failed to load image: ${imageSrc}`);
-      setIsImageLoaded(true); // Показываем контент даже при ошибке
+      setIsImageLoaded(true);
     };
   }, [imageSrc]);
 
-  // Callback для анимации заголовка
   const animateHeader = useCallback(() => {
     if (headerSelector) {
       animateSlideUp(headerSelector, {
@@ -49,7 +43,6 @@ export const useImageLoadAnimation = ({
     }
   }, [headerSelector, slideUpDelay]);
 
-  // Запуск анимаций
   useGSAP(
     () => {
       if (isImageLoaded) {

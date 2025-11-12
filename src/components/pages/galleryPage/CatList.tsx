@@ -8,13 +8,12 @@ import { useSectionScrollAnimation } from '../../../hooks/useSectionScrollAnimat
 
 import Cat from '../../shared/preloader/Cat';
 import CatCard from './CatCard/CatCard';
-import ButtonHome from '../../shared/Buttons/ButtonHome/ButtonHome';
+
 import WaveBackground from '../../shared/Backgrounds/WaveBackground';
 import NebulaPurpleBackground from '../../shared/Backgrounds/NebulaPurpleBackground';
 
 import s from './CatList.module.scss';
 import '../../../assets/styles/CatList.scss';
-import AuthButton from '../../shared/Buttons/AuthButton/AuthButton';
 
 export interface Cat {
   id: string;
@@ -29,7 +28,6 @@ const CatList: React.FC = () => {
   const { data: cats = [], isLoading } = useFetchCatImagesQuery(10);
   const [isRendered, setIsRendered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const redRoundRef = useRef<HTMLImageElement | null>(null);
   const imagesRef = useRef<HTMLDivElement[]>([]);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -62,8 +60,7 @@ const CatList: React.FC = () => {
   return (
     <section className={`cat-list ${isVisible ? 'visible' : 'hidden'}`}>
       <div className={s.auth__wrapper}>
-        <ButtonHome redRoundRef={redRoundRef} />
-        <AuthButton className="authBtnImg" textClassName="textPosition" />
+        {/* <ButtonHome redRoundRef={redRoundRef} /> */}
       </div>
 
       {cats.map((cat, index) => {

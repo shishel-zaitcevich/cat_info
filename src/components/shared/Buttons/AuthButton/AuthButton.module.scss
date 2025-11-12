@@ -3,7 +3,7 @@
   right: 10px;
   z-index: 2;
   cursor: url('/touchCursor2.png'), pointer;
-  filter: grayscale(100%) brightness(1.6);
+  // filter: grayscale(100%) brightness(1.6);
   transition: filter 0.3s ease;
 
   .authBtn {

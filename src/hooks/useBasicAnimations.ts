@@ -15,16 +15,12 @@ interface UseGalleryAnimationsParams {
   imageSelectors: string[];
 }
 
-/**
- * Хук для управления всеми анимациями галереи
- */
 export const useGalleryAnimations = ({
   isTablet,
   isMobile,
   allImagesLoaded,
   imageSelectors,
 }: UseGalleryAnimationsParams) => {
-  // Мемоизируем конфигурацию анимаций
   const animationConfig = useMemo(
     () => createAnimationConfig(isTablet, isMobile),
     [isTablet, isMobile]

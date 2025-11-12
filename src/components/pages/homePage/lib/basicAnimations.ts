@@ -1,8 +1,5 @@
 import gsap from 'gsap';
 
-/**
- * Анимирует появление элемента с fade-in эффектом
- */
 export const animateFadeIn = (
   selector: string,
   duration = 0.5,
@@ -15,9 +12,6 @@ export const animateFadeIn = (
   });
 };
 
-/**
- * Анимирует появление элемента снизу вверх с fade-in
- */
 export const animateSlideUp = (
   selector: string,
   {
@@ -65,9 +59,6 @@ export interface AnimationConfig {
   };
 }
 
-/**
- * Создает конфигурацию анимаций в зависимости от размера экрана
- */
 export const createAnimationConfig = (
   isTablet: boolean,
   isMobile: boolean
@@ -105,9 +96,6 @@ export const createAnimationConfig = (
       },
 });
 
-/**
- * Анимирует фон секции галереи
- */
 export const animateGalleryBackground = (
   config: AnimationConfig['background']
 ) => {
@@ -123,9 +111,6 @@ export const animateGalleryBackground = (
   });
 };
 
-/**
- * Анимирует изображения в галерее
- */
 export const animateGalleryImages = (
   selectors: string[],
   config: AnimationConfig['images'],
@@ -165,9 +150,6 @@ export const animateGalleryImages = (
   }
 };
 
-/**
- * Анимирует заголовок галереи
- */
 export const animateGalleryHeader = (
   config: AnimationConfig['header'],
   isMobile: boolean

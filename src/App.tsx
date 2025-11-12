@@ -13,6 +13,9 @@ const App: React.FC = () => {
           <>
             <Route path="/" element={<HomePage />} />
             <Route path="/gallery" element={<CatGalleryPage />} />
+            <Route path="/images" element={<CatGalleryPage />} />
+            <Route path="/play" element={<CatGalleryPage />} />
+            <Route path="/catbot" element={<CatGalleryPage />} />
           </>
         </Routes>
       </BrowserRouter>
