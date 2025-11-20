@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { useFetchCatImagesQuery } from '../../../api/catApi';
@@ -14,6 +14,8 @@ import NebulaPurpleBackground from '../../shared/Backgrounds/NebulaPurpleBackgro
 
 import s from './CatList.module.scss';
 import '../../../assets/styles/CatList.scss';
+import { useWindowSize } from 'usehooks-ts';
+import ChatBot from '../../../features/Chatbot/ChatBot';
 
 export interface Cat {
   id: string;
@@ -32,6 +34,10 @@ const CatList: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   const { isOpen } = useSelector((state: RootState) => state.modal);
+
+  const { width } = useWindowSize();
+  const TABLET_BREAKPOINT = 900;
+  const isTablet = useMemo(() => width < TABLET_BREAKPOINT, [width]);
 
   useEffect(() => {
     console.log(
@@ -72,7 +78,10 @@ const CatList: React.FC = () => {
             <div className="wrapper-outer">
               <div className="wrapper-inner">
                 <BackgroundComponent>
-                  <CatCard cat={cat} index={index} className="cat-card" />
+                  <div className={s.galleryWrapper}>
+                    {!isTablet && <ChatBot className="chatBot" />}
+                    <CatCard cat={cat} index={index} className="cat-card" />
+                  </div>
                 </BackgroundComponent>
               </div>
             </div>

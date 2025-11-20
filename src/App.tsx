@@ -28,6 +28,8 @@ const App: React.FC = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/gallery" element={<CatGalleryPage />} />
             <Route path="/images" element={<CatGalleryPage />} />
+            <Route path="/favourites" element={<CatGalleryPage />} />
+            <Route path="/funfacts" element={<CatGalleryPage />} />
             <Route path="/play" element={<CatGalleryPage />} />
             <Route path="/catbot" element={<ChatBot />} />
             {/* Можно добавить 404 позже */}

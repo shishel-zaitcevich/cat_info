@@ -2,7 +2,7 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .container {
@@ -62,10 +62,14 @@
   color: #ddd5d5;
   font-weight: 500;
   transition: 0.2s;
-  font-size: 28px;
+  font-size: 24px;
 
   &:hover {
     color: #ffffff;
+  }
+
+  @media (max-width: 1600px) {
+    font-size: 22px;
   }
 }
 

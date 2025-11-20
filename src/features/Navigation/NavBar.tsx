@@ -20,6 +20,8 @@ const NavBar: React.FC = () => {
     () => [
       { path: '/', label: 'Home' },
       { path: '/gallery', label: 'Gallery' },
+      { path: '/favourites', label: 'Favourutes' },
+      { path: '/funfacts', label: 'Fun facts' },
       { path: '/images', label: 'Images' },
       { path: '/play', label: 'Play' },
 

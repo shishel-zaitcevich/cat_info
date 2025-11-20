@@ -69,34 +69,6 @@ img {
   //   }
   // }
 
-  .chatBot {
-    z-index: 10;
-    position: fixed;
-    left: 10%;
-    top: 10%;
-    max-width: 600px;
-    width: 100%;
-
-    @media (max-width: 1580px) {
-      max-width: 30%;
-      // margin-left: 120px;
-    }
-
-    // @media (max-width: 1080px) {
-    //   max-width: 440px;
-    //   margin-left: 120px;
-    // }
-
-    // @media (max-width: 800px) {
-    //   margin-left: 0;
-    // }
-
-    // @media (max-width: 540px) {
-    //   max-width: 340px;
-    //   max-height: 300px;
-    // }
-  }
-
   .authBtnImg {
     filter: none;
   }

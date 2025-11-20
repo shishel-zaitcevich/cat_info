@@ -73,21 +73,27 @@ const ChatBot: React.FC<ChatbotProps> = ({ className }) => {
 
   return (
     <Paper
-      elevation={3}
       sx={{
-        p: 3,
+        p: { xs: 2, sm: 3 },
+        borderRadius: 3,
+        background: 'transparent',
+        color: '#fff',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.3), 0 0 40px rgba(238,108,159,0.2)',
+
+        width: { xs: '92%', sm: '85%', md: 600 },
         maxWidth: 600,
-        m: '20px auto',
-        height: '70vh',
+        height: { xs: '86vh', sm: '82vh', md: '70vh' },
+        maxHeight: '90vh',
+
+        // position: { xs: 'fixed', md: 'relative' },
+        top: { xs: '50%', md: 'auto' },
+        left: { xs: '50%', md: 'auto' },
+        transform: { xs: 'translate(-50%, -50%)', md: 'none' },
+        // m: { xs: 0, md: '40px auto' },
+
+        zIndex: 1300,
         display: 'flex',
         flexDirection: 'column',
-        borderRadius: 3,
-
-        background: 'transparent',
-        // background: 'rgba(255, 255, 255, 0.2)',
-        color: '#fff',
-        boxShadow:
-          '0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(160, 157, 157, 1), 0 0 40px rgba(139, 0, 0, 0.25),0 0 80px rgba(139, 0, 0, 0.15)',
       }}
       className={className}
     >

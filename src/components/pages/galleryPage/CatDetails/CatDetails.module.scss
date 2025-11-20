@@ -5,8 +5,8 @@
   padding: 10px;
   margin: 30px;
   text-align: center;
-  background: #f9f9f9;
-  color: #000;
+  background: #f9f9f9cf;
+  color: #00000073;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,6 +14,11 @@
   // overflow: scroll;
   overflow: auto;
   height: 95%;
+  position: relative;
+
+  @media (max-width: 900px) {
+    margin: 45px 0;
+  }
 }
 
 .catImage {
@@ -69,7 +74,8 @@
 }
 
 .wikipediaLink a {
-  color: rgb(146, 88, 88);
+  // color: rgb(146, 88, 88);
+  color: #9977f1ff;
   text-decoration: none;
   font-weight: bold;
   cursor: url('/touchCursor2.png'), pointer;
