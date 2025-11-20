@@ -1,39 +1,48 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-
-import s from './NavBar.module.scss';
+import { useWindowSize } from 'usehooks-ts';
 import classNames from 'classnames';
 import AuthButton from '../../components/shared/Buttons/AuthButton/AuthButton';
 import BurgerMenu from './BurgerMenu';
-import { useWindowSize } from 'usehooks-ts';
+
+import s from './NavBar.module.scss';
 
 const TABLET_BREAKPOINT = 900;
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
-  const handleToggle = () => setIsOpen((prev) => !prev);
-  const handleClose = () => setIsOpen(false);
-
   const { width } = useWindowSize();
 
   const isTablet = useMemo(() => width < TABLET_BREAKPOINT, [width]);
 
-  const links = [
-    { path: '/', label: 'Home' },
-    { path: '/gallery', label: 'Gallery' },
-    { path: '/images', label: 'Images' },
-    { path: '/play', label: 'Play' },
-    // { path: '/catbot', label: 'CatBot' },
-    isTablet ? { path: '/catbot', label: 'CatBot' } : { path: '', label: '' },
-  ];
+  const links = useMemo(
+    () => [
+      { path: '/', label: 'Home' },
+      { path: '/gallery', label: 'Gallery' },
+      { path: '/images', label: 'Images' },
+      { path: '/play', label: 'Play' },
+
+      ...(isTablet ? [{ path: '/catbot', label: 'CatBot' }] : []),
+    ],
+    [isTablet]
+  );
+
+  const handleToggle = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   return (
     <header className={s.header}>
       <div className={s.container}>
-        <img className={s.logo} src="/catslogo.png" alt="logo" />
-        <AuthButton className={s.homeAuth} />
+        <NavLink to={'/'}>
+          <img className={s.logo} src="/catslogo.png" alt="logo" />
+        </NavLink>
+
         <nav className={s.navLinks}>
           {links.map(({ path, label }) => (
             <NavLink
@@ -48,10 +57,13 @@ const NavBar: React.FC = () => {
           ))}
         </nav>
 
+        <AuthButton className={s.homeAuth} />
+
         <div className={s.actions}>
           <button
             className={classNames(s.burgerBtn, { [s.open]: isOpen })}
             onClick={handleToggle}
+            aria-label="Toggle menu"
           >
             <span></span>
             <span></span>

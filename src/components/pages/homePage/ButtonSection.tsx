@@ -40,13 +40,14 @@ export function ButtonSection() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             sx={{
-              maxWidth: '300px',
-              width: isMobile ? '220px' : '100%',
-              maxHeight: '70px',
+              maxWidth: '420px',
+              width: isMobile ? '220px' : isTablet ? '280px' : '100%',
+              maxHeight: isTablet ? '60px' : '90px',
               height: isMobile ? '50px' : '100%',
               fontSize: isMobile ? '2rem' : '1.5rem',
               // backgroundColor: '#aab1b7',
               background: 'linear-gradient(45deg, #2629d4ff, #964ee9)',
+              // background: 'linear-gradient(45deg, #f3f2f2, #964ee9)',
               marginLeft: isMobile
                 ? '0'
                 : isTablet
@@ -55,6 +56,7 @@ export function ButtonSection() {
                     ? '85%'
                     : '90%',
               marginTop: isMobile ? '320px' : isTablet ? '450px' : '0',
+              padding: isTablet ? '8px 16px' : '16px 40px',
               borderRadius: '10px',
               fontWeight: '600',
             }}

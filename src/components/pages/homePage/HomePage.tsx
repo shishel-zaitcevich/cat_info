@@ -1,4 +1,5 @@
 import { useState, useEffect, RefObject } from 'react';
+import React from 'react';
 
 import Cat from '../../shared/preloader/Cat';
 import { ButtonSection } from './ButtonSection';
@@ -10,14 +11,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ReactLenis, { LenisRef } from 'lenis/react';
 
 import 'lenis/dist/lenis.css';
-import React from 'react';
-
-import Modal from '../../../features/Modal/Modal';
 
 import classNames from 'classnames';
 
 import s from './HomePage.module.scss';
-import NavBar from '../../../features/Navigation/NavBar';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -102,8 +99,6 @@ const HomePage: React.FC = () => {
           style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           className={classNames(s.home__page, 'home-page')}
         >
-          <NavBar />
-
           <CatsSection />
           <div
             style={{
@@ -115,6 +110,7 @@ const HomePage: React.FC = () => {
             <GallerySection />
             <ButtonSection />
           </div>
+          {/* <Modal /> */}
         </div>
       )}
     </div>
@@ -127,8 +123,6 @@ const HomePage: React.FC = () => {
           style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
           className={s.home__page}
         >
-          <NavBar />
-
           <CatsSection />
           <div
             style={{
@@ -140,7 +134,6 @@ const HomePage: React.FC = () => {
             <GallerySection />
             <ButtonSection />
           </div>
-          <Modal />
         </div>
       )}
     </ReactLenis>

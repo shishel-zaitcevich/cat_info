@@ -50,15 +50,7 @@ export function GallerySection() {
   });
 
   return (
-    <div
-      className="gallery__section"
-      id="gallerySection"
-      data-scroll-section
-      // style={{
-      //   // opacity: allImagesLoaded ? 1 : 0,
-      //   transition: 'opacity 0.5s ease',
-      // }}
-    >
+    <div className="gallery__section" id="gallerySection" data-scroll-section>
       {IMAGES.map((image) => (
         <img
           key={image.className}
